@@ -1,0 +1,106 @@
+﻿@{
+    ViewBag.Title = "Danh sách người dùng";
+}
+@using OCR.Models;
+@model UsersModel
+<div class="breadcrumb">
+    <ul>
+        <li><a href="#">ORC</a></li>
+        <li>Danh sách người dùng</li>
+    </ul>
+</div>
+<div class="separator-breadcrumb border-top"></div>
+<div class="row">
+    <div class="col-md-12 mb-3">
+        <div class="card text-left">
+            <div class="card-body">
+                <h4 class="card-title mb-3">Danh sách người dùng</h4>
+                <div class="table-responsive">
+                    <div class="dataTables_wrapper">
+                        <div class="row">
+                            <div class="col-sm-12 col-md-6">
+                                <div class="dataTables_length" id="zero_configuration_table_length">
+                                    <label>
+                                        Hiển thị
+                                        <select name="zero_configuration_table_length" aria-controls="zero_configuration_table" class="form-control form-control-sm"><option value="10">10</option><option value="25">25</option><option value="50">50</option><option value="100">100</option></select> user
+                                    </label>
+                                </div>
+                            </div>
+                            <div class="col-sm-12 col-md-6">
+                                <div id="zero_configuration_table_filter" class="dataTables_filter">
+                                    <label>Tìm kiếm:<input type="search" class="form-control form-control-sm" placeholder="" aria-controls="zero_configuration_table"></label>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <table class="table">
+                        <thead>
+                            <tr>
+                                <th scope="col">STT</th>
+                                <th scope="col">Số thẻ</th>
+                                <th scope="col">Họ và tên</th>
+                                <th scope="col">Ngày sinh</th>
+                                <th scope="col">Giới tính</th>
+                                <th scope="col">Dân tộc</th>
+                                <th scope="col">Tôn giáo</th>
+                                <th scope="col">Quê quán</th>
+                                <th scope="col">Thường trú</th>
+                                <th scope="col">Có giá trị đến ngày</th>
+                                <th scope="col">Ngày cấp</th>
+                                <th scope="col">Nơi cấp</th>
+                                <th scope="col">Action</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            @{
+                                foreach (var item in Model.data.users)
+                                {
+                                    <tr>
+                                        <th scope="row">@item.ma</th>
+                                        <td>@item.so_the</td>
+                                        <td>@item.ho_va_ten</td>
+                                        <td>@item.ngay_sinh</td>
+                                        <td><span class="badge @(item.gioi_tinh.ToLower().Equals("nam")?"badge-success":"badge-info")">@item.gioi_tinh</span></td>
+                                        <td>@item.dan_toc</td>
+                                        <td>@item.ton_giao</td>
+                                        <td>@item.que_quan</td>
+                                        <td>@item.thuong_tru</td>
+                                        <td>@item.co_gia_tri_den</td>
+                                        <td>@item.ngay_cap</td>
+                                        <td>@item.noi_cap</td>
+                                        <td><a class="text-success mr-2" href="#"><i class="nav-icon i-Pen-2 font-weight-bold"></i></a><a class="text-danger mr-2" href="#"><i class="nav-icon i-Close-Window font-weight-bold"></i></a></td>
+                                    </tr>
+                                }
+                            }
+                        </tbody>
+                    </table>
+                    <div class="dataTables_wrapper">
+                        <div class="row ">
+                            <div class="col-sm-12 col-md-12">
+                                <div class="dataTables_paginate paging_simple_numbers" id="zero_configuration_table_paginate">
+                                    <ul class="pagination">
+                                        <li class="paginate_button page-item previous disabled" id="zero_configuration_table_previous">
+                                            <a href="#" aria-controls="zero_configuration_table" data-dt-idx="0" tabindex="0" class="page-link"><i class="nav-icon i-Arrow-Left-2 font-weight-bold"></i></a>
+                                        </li>
+                                        @{
+                                            for (int i = 1; i <= Model.data.amount_pages; i++)
+                                            {
+                                                <li class="paginate_button page-item@(i==Model.data.current_page?" active":"")">
+                                                    <a href="#" aria-controls="zero_configuration_table" data-dt-idx="@i" tabindex="0" class="page-link">@i</a>
+                                                </li>
+                                            }
+                                        }
+                                        <li class="paginate_button page-item next" id="zero_configuration_table_next">
+                                            <a href="#" aria-controls="zero_configuration_table" data-dt-idx="@(Model.data.amount_pages+1)" tabindex="0" class="page-link"><i class="nav-icon i-Arrow-Right-2 font-weight-bold"></i></a>
+                                        </li>
+                                    </ul>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <!-- end of col-->
+</div>

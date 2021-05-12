@@ -1,0 +1,88 @@
+﻿<!DOCTYPE html>
+<html lang="en" dir="">
+<meta http-equiv="content-type" content="text/html;charset=utf-8" /><!-- /Added by HTTrack -->
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width,initial-scale=1" />
+    <meta http-equiv="X-UA-Compatible" content="ie=edge" />
+    <title>Dashboard v1 | Gull admin template</title>
+    <link href="https://fonts.googleapis.com/css?family=Nunito:300,400,400i,600,700,800,900" rel="stylesheet" />
+    <link href="~/Content/dist-assets/css/themes/lite-purple.css" rel="stylesheet" />
+    <link href="~/Content/dist-assets/css/plugins/perfect-scrollbar.css" rel="stylesheet" />
+    <link rel="stylesheet" href="~/Content/dist-assets/css/plugins/fontawesome-5.css" />
+    <link href="~/Content/dist-assets/css/plugins/metisMenu.min.css" rel="stylesheet" />
+    <link rel="stylesheet" href="~/Content/dist-assets/css/plugins/datatables.min.css">
+    <link rel="stylesheet" href="~/Content/dist-assets/css/plugins/bootstrap-datepicker.min.css">
+</head>
+
+<body class="text-left">
+    <div class="app-admin-wrap layout-sidebar-vertical sidebar-full">
+        <div class="sidebar-panel">
+            <div class="gull-brand pr-3 text-center mt-4 mb-2 d-flex justify-content-lg-start align-items-center">
+                <img class="pl-3" src="~/Content/dist-assets/images/logo.png" alt="alt" />
+                <!--  <span class=" item-name text-20 text-primary font-weight-700">GULL</span> -->
+                <!--  <div class="sidebar-compact-switch ml-auto"><span></span></div> -->
+            </div>
+            <!--  user -->
+            <div class="scroll-nav ps ps--active-y" data-perfect-scrollbar="data-perfect-scrollbar" data-suppress-scroll-x="true">
+                <div class="side-nav">
+                    <div class="main-menu">
+                        <ul class="metismenu" id="menu">
+                            <li class="Ul_li--hover"><a href="datatables.html"><i class="i-Business-Mens text-20 mr-2 text-muted"></i><span class="item-name text-15 text-muted">DS người dùng</span></a></li>
+                            <li class="Ul_li--hover"><a href="datatables.html"><i class="i-Data-Upload text-20 mr-2 text-muted"></i><span class="item-name text-15 text-muted">eKYC</span></a></li>
+                        </ul>
+                    </div>
+                </div>
+                <div class="ps__rail-x" style="left: 0px; bottom: 0px;">
+                    <div class="ps__thumb-x" tabindex="0" style="left: 0px; width: 0px;"></div>
+                </div>
+                <div class="ps__rail-y" style="top: 0px; height: 404px; right: 0px;">
+                    <div class="ps__thumb-y" tabindex="0" style="top: 0px; height: 325px;"></div>
+                </div>
+                <div class="ps__rail-x" style="left: 0px; bottom: 0px;">
+                    <div class="ps__thumb-x" tabindex="0" style="left: 0px; width: 0px;"></div>
+                </div>
+                <div class="ps__rail-y" style="top: 0px; height: 404px; right: 0px;">
+                    <div class="ps__thumb-y" tabindex="0" style="top: 0px; height: 325px;"></div>
+                </div>
+            </div>
+            <!--  side-nav-close -->
+        </div>
+        <div class="switch-overlay"></div>
+        <div class="main-content-wrap mobile-menu-content bg-off-white m-0">
+            <header class="main-header bg-white d-flex justify-content-between p-2">
+                <div class="header-toggle">
+                    <div class="menu-toggle mobile-menu-icon">
+                        <div></div>
+                        <div></div>
+                        <div></div>
+                    </div>
+                </div>
+            </header><!-- ============ Body content start ============= -->
+            <div class="main-content pt-4">
+                @RenderBody()
+            </div>
+            <div class="sidebar-overlay open"></div><!-- Footer Start -->
+            <div class="flex-grow-1"></div>
+            <!-- fotter end -->
+        </div>
+    </div>
+    <!-- ============ Search UI End ============= -->
+    <script src="~/Content/dist-assets/js/plugins/jquery-3.3.1.min.js"></script>
+    <script src="~/Content/dist-assets/js/plugins/bootstrap.bundle.min.js"></script>
+    <script src="~/Content/dist-assets/js/plugins/perfect-scrollbar.min.js"></script>
+    <script src="~/Content/dist-assets/js/scripts/tooltip.script.min.js"></script>
+    <script src="~/Content/dist-assets/js/scripts/script.min.js"></script>
+    <script src="~/Content/dist-assets/js/scripts/script_2.min.js"></script>
+    <script src="~/Content/dist-assets/js/scripts/sidebar.large.script.min.js"></script>
+    <script src="~/Content/dist-assets/js/plugins/feather.min.js"></script>
+    <script src="~/Content/dist-assets/js/plugins/metisMenu.min.js"></script>
+    <script src="~/Content/dist-assets/js/scripts/layout-sidebar-vertical.min.js"></script>
+    <script src="~/Content/dist-assets/js/plugins/echarts.min.js"></script>
+    <script src="~/Content/dist-assets/js/scripts/echart.options.min.js"></script>
+    <script src="~/Content/dist-assets/js/scripts/dashboard.v1.script.min.js"></script>
+    <script src="~/Content/dist-assets/js/scripts/form.validation.script.min.js"></script>
+    <script src="~/Content/dist-assets/js/plugins/bootstrap-datepicker.min.js"></script>
+    @RenderSection("childscript", required: false)
+</body>
+</html>
