@@ -24,9 +24,9 @@ namespace OCR.Models
     public class UsersDataset
     {
         public List<Users> users;
-        public int current_page;
-        public int amount_pages;
-        public int amount_users;
+        public int? current_page;
+        public int? amount_pages;
+        public int? amount_users;
         public string keyword;
         public string size;
     }
@@ -34,5 +34,6 @@ namespace OCR.Models
     public class UserDataset
     {
         public Users user;
+        public int? type;
     }
 }

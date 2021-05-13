@@ -97,6 +97,46 @@
                             </div>
                             <div class="form-row">
                                 <div class="col-md-7 mb-8">
+                                    <label mode="normal" for="@Html.Raw(nameof(Model.data.user.dan_toc))" id="lb-@Html.Raw(nameof(Model.data.user.dan_toc))">Dân tộc:</label>
+                                    <input kind="text" mode="edit"
+                                           style="display:none;"
+                                           class="form-control"
+                                           id="@Html.Raw(nameof(Model.data.user.dan_toc))"
+                                           name="@Html.Raw(nameof(Model.data.user.dan_toc))"
+                                           type="text"
+                                           value="@Model.data.user.dan_toc"
+                                           required="required" />
+                                    <div class="invalid-feedback" kind="validation">
+                                        Dân tộc là bắt buộc
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="form-row">
+                                <div class="form-group col-md-4">
+                                    <label mode="normal" for="@Html.Raw(nameof(Model.data.user.ton_giao))" id="lb-@Html.Raw(nameof(Model.data.user.ton_giao))" style="        color: #47404f;
+        font-size: 0.813rem;">Tôn giáo:</label>
+                                    <div class="ul-form__radio-inline">
+                                        <label mode="edit" style="display:none;" class="ul-radio__position radio radio-primary form-check-inline">
+                                            <input kind="radio" mode="edit"
+                                                   style="display:none;"
+                                                   type="radio"
+                                                   name="@Html.Raw(nameof(Model.data.user.ton_giao))"
+                                                   value="Có"
+                                                   checked="@(Model.data.user.ton_giao.ToLower().Equals("có")?true:false)" /><span class="ul-form__radio-font">Có</span><span class="checkmark"></span>
+                                        </label>
+                                        <label mode="edit" style="display:none;" class="ul-radio__position radio radio-primary">
+                                            <input kind="radio" mode="edit"
+                                                   style="display:none;"
+                                                   type="radio"
+                                                   name="@Html.Raw(nameof(Model.data.user.ton_giao))"
+                                                   value="Không"
+                                                   checked="@(Model.data.user.ton_giao.ToLower().Equals("có")?false:true)" /><span class="ul-form__radio-font">Không</span><span class="checkmark"></span>
+                                        </label>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="form-row">
+                                <div class="col-md-7 mb-8">
                                     <label mode="normal" for="@Html.Raw(nameof(Model.data.user.que_quan))" id="lb-@Html.Raw(nameof(Model.data.user.que_quan))">Quê quán:</label>
                                     <input kind="text" mode="edit"
                                            style="display:none;"
@@ -183,15 +223,15 @@
                             <div class="form-row">
                                 <div class="col-md-7 mb-8">
                                     <label mode="edit" for="@Html.Raw(nameof(Model.data.user.thuong_tru_tinh))" id="lb-@Html.Raw(nameof(Model.data.user.thuong_tru_tinh))" style="width:100px;">Tỉnh/TP:</label>
-                                    <input kind="text" 
-                                           _style="display:inline-block;" 
-                                           mode="edit" 
-                                           style="display: none;width: calc(100% - 105px);" 
-                                           class="form-control inline-bl" 
-                                           id="@Html.Raw(nameof(Model.data.user.thuong_tru_tinh))" 
-                                           name="@Html.Raw(nameof(Model.data.user.thuong_tru_tinh))" 
-                                           type="text" 
-                                           value="@Model.data.user.thuong_tru_tinh" 
+                                    <input kind="text"
+                                           _style="display:inline-block;"
+                                           mode="edit"
+                                           style="display: none;width: calc(100% - 105px);"
+                                           class="form-control inline-bl"
+                                           id="@Html.Raw(nameof(Model.data.user.thuong_tru_tinh))"
+                                           name="@Html.Raw(nameof(Model.data.user.thuong_tru_tinh))"
+                                           type="text"
+                                           value="@Model.data.user.thuong_tru_tinh"
                                            required="required" />
                                     <div class="invalid-feedback" kind="validation">
                                         Tỉnh/TP là bắt buộc
