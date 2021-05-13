@@ -8,7 +8,9 @@ namespace OCR.Contants
     public class UrlContants
     {
         private const string BaseUrl = "https://741vibt902.execute-api.us-east-2.amazonaws.com/stag";
-        public static string Users = $"{BaseUrl}/api/v1/users?page={0}&page_size={1}&keyword={2}";
-        public static string User = $"{BaseUrl}/api/v1/users/user_id";
+        public static string Users = $"{BaseUrl}/api/v1/users?page={{0}}&page_size={{1}}&keyword={{2}}";
+        public static string User = $"{BaseUrl}/api/v1/users/user_id={{0}}";
+        public static string PutUser = $"{BaseUrl}/api/v1/users/user_id={{0}}";
+        public static string DeleteUser = $"{BaseUrl}/api/v1/users/user_id={{0}}";
     }
 }

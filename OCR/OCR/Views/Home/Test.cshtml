@@ -31,7 +31,7 @@
                             <div class="form-row">
                                 <div class="col-md-12 mb-8">
                                     <label mode="normal" for="@Html.Raw(nameof(Model.data.user.so_the))" id="lb-@Html.Raw(nameof(Model.data.user.so_the))">Số thẻ:</label>
-                                    <input kind="text" mode="edit"
+                                    <input pattern="text" mode="edit"
                                            style="display:none;"
                                            class="form-control"
                                            id="@Html.Raw(nameof(Model.data.user.so_the))"
@@ -39,7 +39,7 @@
                                            type="text"
                                            value="@Model.data.user.so_the"
                                            required="required" />
-                                    <div class="invalid-feedback" kind="validation">
+                                    <div class="invalid-feedback">
                                         Số thẻ là bắt buộc
                                     </div>
                                 </div>
@@ -47,7 +47,7 @@
                             <div class="form-row">
                                 <div class="col-md-12 mb-8">
                                     <label mode="normal" for="@Html.Raw(nameof(Model.data.user.ho_va_ten))" id="lb-@Html.Raw(nameof(Model.data.user.ho_va_ten))">Họ và tên:</label>
-                                    <input kind="text" mode="edit"
+                                    <input pattern="text" mode="edit"
                                            style="display:none;"
                                            class="form-control"
                                            id="@Html.Raw(nameof(Model.data.user.ho_va_ten))"
@@ -55,7 +55,7 @@
                                            type="text"
                                            value="@Model.data.user.ho_va_ten"
                                            required="required" />
-                                    <div class="invalid-feedback" kind="validation">
+                                    <div class="invalid-feedback">
                                         Họ và tên là bắt buộc
                                     </div>
                                 </div>
@@ -63,7 +63,7 @@
                             <div class="form-row">
                                 <div class="col-md-6 mb-8">
                                     <label mode="normal" for="@Html.Raw(nameof(Model.data.user.ngay_sinh))" id="lb-@Html.Raw(nameof(Model.data.user.ngay_sinh))">Ngày, tháng, năm sinh:</label>
-                                    <input kind="date" mode="edit"
+                                    <input pattern="date" mode="edit"
                                            style="display:none;"
                                            class="form-control datepicker"
                                            id="@Html.Raw(nameof(Model.data.user.ngay_sinh))"
@@ -77,7 +77,7 @@
         font-size: 0.813rem;">Giới tính:</label>
                                     <div class="ul-form__radio-inline">
                                         <label mode="edit" style="display:none;" class="ul-radio__position radio radio-primary form-check-inline">
-                                            <input kind="radio" mode="edit"
+                                            <input pattern="radio" mode="edit"
                                                    style="display:none;"
                                                    type="radio"
                                                    name="@Html.Raw(nameof(Model.data.user.gioi_tinh))"
@@ -85,7 +85,7 @@
                                                    checked="@(Model.data.user.gioi_tinh.ToLower().Equals("nam")?true:false)" /><span class="ul-form__radio-font">Nam</span><span class="checkmark"></span>
                                         </label>
                                         <label mode="edit" style="display:none;" class="ul-radio__position radio radio-primary">
-                                            <input kind="radio" mode="edit"
+                                            <input pattern="radio" mode="edit"
                                                    style="display:none;"
                                                    type="radio"
                                                    name="@Html.Raw(nameof(Model.data.user.gioi_tinh))"
@@ -98,7 +98,7 @@
                             <div class="form-row">
                                 <div class="col-md-7 mb-8">
                                     <label mode="normal" for="@Html.Raw(nameof(Model.data.user.que_quan))" id="lb-@Html.Raw(nameof(Model.data.user.que_quan))">Quê quán:</label>
-                                    <input kind="text" mode="edit"
+                                    <input pattern="text" mode="edit"
                                            style="display:none;"
                                            class="form-control"
                                            id="@Html.Raw(nameof(Model.data.user.que_quan))"
@@ -106,7 +106,7 @@
                                            type="text"
                                            value="@Model.data.user.que_quan"
                                            required="required" disabled />
-                                    <div class="invalid-feedback" kind="validation">
+                                    <div class="invalid-feedback">
                                         Quê quán là bắt buộc
                                     </div>
                                 </div>
@@ -114,59 +114,51 @@
                             <div class="form-row">
                                 <div class="col-md-7 mb-8">
                                     <label mode="edit" for="@Html.Raw(nameof(Model.data.user.que_quan_tinh))" id="lb-@Html.Raw(nameof(Model.data.user.que_quan_tinh))" style="width:100px;">Tỉnh/TP:</label>
-                                    <input kind="text" mode="edit"
-                                           _style="display:inline-block;"
-                                           style="display: none;width: calc(100% - 105px);"
+                                    <input pattern="text" mode="edit"
+                                           style="display:none;"
                                            class="form-control inline-bl"
+                                           style="        width: calc(100% - 105px);"
                                            id="@Html.Raw(nameof(Model.data.user.que_quan_tinh))"
                                            name="@Html.Raw(nameof(Model.data.user.que_quan_tinh))"
                                            type="text"
                                            value="@Model.data.user.que_quan_tinh"
                                            required="required" />
-                                    <div class="invalid-feedback" kind="validation">
+                                    <div class="invalid-feedback">
                                         Tỉnh/TP là bắt buộc
+                                    </div>
+                                    <label mode="edit" for="@Html.Raw(nameof(Model.data.user.que_quan_huyen))" id="lb-@Html.Raw(nameof(Model.data.user.que_quan_huyen))" style="width:100px;">Quận/Huyện:</label>
+                                    <input pattern="text" mode="edit"
+                                           style="display:none;"
+                                           class="form-control inline-bl"
+                                           style="width:calc(100% - 105px);"
+                                           id="@Html.Raw(nameof(Model.data.user.que_quan_huyen))"
+                                           name="@Html.Raw(nameof(Model.data.user.que_quan_huyen))"
+                                           type="text"
+                                           value="@Model.data.user.que_quan_huyen"
+                                           required="required" />
+                                    <div class="invalid-feedback">
+                                        Quận/Huyện là bắt buộc
+                                    </div>
+                                    <label mode="edit" for="@Html.Raw(nameof(Model.data.user.que_quan_xa))" id="lb-@Html.Raw(nameof(Model.data.user.que_quan_xa))" style="width:100px;">Phường/Xã:</label>
+                                    <input pattern="text" mode="edit"
+                                           style="display:none;"
+                                           class="form-control inline-bl"
+                                           style="        width: calc(100% - 105px);"
+                                           id="@Html.Raw(nameof(Model.data.user.que_quan_xa))"
+                                           name="@Html.Raw(nameof(Model.data.user.que_quan_xa))"
+                                           type="text"
+                                           value="@Model.data.user.que_quan_xa"
+                                           required="required" />
+                                    <div class="invalid-feedback">
+                                        Phường/Xã là bắt buộc
                                     </div>
                                 </div>
 
                             </div>
                             <div class="form-row">
                                 <div class="col-md-7 mb-8">
-                                    <label mode="edit" for="@Html.Raw(nameof(Model.data.user.que_quan_huyen))" id="lb-@Html.Raw(nameof(Model.data.user.que_quan_huyen))" style="width:100px;">Quận/Huyện:</label>
-                                    <input kind="text" mode="edit"
-                                           _style="display:inline-block;"
-                                           style="display: none;width: calc(100% - 105px);"
-                                           class="form-control inline-bl"
-                                           id="@Html.Raw(nameof(Model.data.user.que_quan_huyen))"
-                                           name="@Html.Raw(nameof(Model.data.user.que_quan_huyen))"
-                                           type="text"
-                                           value="@Model.data.user.que_quan_huyen"
-                                           required="required" />
-                                    <div class="invalid-feedback" kind="validation">
-                                        Quận/Huyện là bắt buộc
-                                    </div>
-                                </div>
-                            </div>
-                            <div class="form-row">
-                                <div class="col-md-7 mb-8">
-                                    <label mode="edit" for="@Html.Raw(nameof(Model.data.user.que_quan_xa))" id="lb-@Html.Raw(nameof(Model.data.user.que_quan_xa))" style="width:100px;">Phường/Xã:</label>
-                                    <input kind="text" mode="edit"
-                                           _style="display:inline-block;"
-                                           style="display: none;width: calc(100% - 105px);"
-                                           class="form-control inline-bl"
-                                           id="@Html.Raw(nameof(Model.data.user.que_quan_xa))"
-                                           name="@Html.Raw(nameof(Model.data.user.que_quan_xa))"
-                                           type="text"
-                                           value="@Model.data.user.que_quan_xa"
-                                           required="required" />
-                                    <div class="invalid-feedback" kind="validation">
-                                        Phường/Xã là bắt buộc
-                                    </div>
-                                </div>
-                            </div>
-                            <div class="form-row">
-                                <div class="col-md-7 mb-8">
                                     <label mode="normal" for="@Html.Raw(nameof(Model.data.user.thuong_tru))" id="lb-@Html.Raw(nameof(Model.data.user.thuong_tru))">Thường trú:</label>
-                                    <input kind="text" mode="edit"
+                                    <input pattern="text" mode="edit"
                                            style="display:none;"
                                            class="form-control"
                                            id="@Html.Raw(nameof(Model.data.user.thuong_tru))"
@@ -175,7 +167,7 @@
                                            value="@Model.data.user.thuong_tru"
                                            required="required"
                                            disabled />
-                                    <div class="invalid-feedback" kind="validation">
+                                    <div class="invalid-feedback">
                                         Thường trú là bắt buộc
                                     </div>
                                 </div>
@@ -183,59 +175,43 @@
                             <div class="form-row">
                                 <div class="col-md-7 mb-8">
                                     <label mode="edit" for="@Html.Raw(nameof(Model.data.user.thuong_tru_tinh))" id="lb-@Html.Raw(nameof(Model.data.user.thuong_tru_tinh))" style="width:100px;">Tỉnh/TP:</label>
-                                    <input kind="text" 
-                                           _style="display:inline-block;" 
-                                           mode="edit" 
-                                           style="display: none;width: calc(100% - 105px);" 
-                                           class="form-control inline-bl" 
-                                           id="@Html.Raw(nameof(Model.data.user.thuong_tru_tinh))" 
-                                           name="@Html.Raw(nameof(Model.data.user.thuong_tru_tinh))" 
-                                           type="text" 
-                                           value="@Model.data.user.thuong_tru_tinh" 
-                                           required="required" />
-                                    <div class="invalid-feedback" kind="validation">
+                                    <input pattern="text" mode="edit" style="display:none;" class="form-control inline-bl" style="        width: calc(100% - 105px);" id="@Html.Raw(nameof(Model.data.user.thuong_tru_tinh))" type="text" value="@Model.data.user.thuong_tru_tinh" required="required" />
+                                    <div class="invalid-feedback">
                                         Tỉnh/TP là bắt buộc
                                     </div>
-                                </div>
-                            </div>
-                            <div class="form-row">
-                                <div class="col-md-7 mb-8">
                                     <label mode="edit" for="@Html.Raw(nameof(Model.data.user.thuong_tru_huyen))" id="lb-@Html.Raw(nameof(Model.data.user.thuong_tru_huyen))" style="width:100px;">Quận/Huyện:</label>
-                                    <input kind="text" mode="edit"
-                                           _style="display:inline-block;"
-                                           style="display: none;width: calc(100% - 105px);"
+                                    <input pattern="text" mode="edit"
+                                           style="display:none;"
                                            class="form-control inline-bl"
+                                           style="width:calc(100% - 105px);"
                                            id="@Html.Raw(nameof(Model.data.user.thuong_tru_huyen))"
                                            name="@Html.Raw(nameof(Model.data.user.thuong_tru_huyen))"
                                            type="text"
                                            value="@Model.data.user.thuong_tru_huyen"
                                            required="required" />
-                                    <div class="invalid-feedback" kind="validation">
+                                    <div class="invalid-feedback">
                                         Quận/Huyện là bắt buộc
                                     </div>
-                                </div>
-                            </div>
-                            <div class="form-row">
-                                <div class="col-md-7 mb-8">
                                     <label mode="edit" for="@Html.Raw(nameof(Model.data.user.thuong_tru_xa))" id="lb-@Html.Raw(nameof(Model.data.user.thuong_tru_xa))" style="width:100px;">Phường/Xã:</label>
-                                    <input kind="text" mode="edit"
-                                           _style="display:inline-block;"
-                                           style="display: none;width: calc(100% - 105px);"
+                                    <input pattern="text" mode="edit"
+                                           style="display:none;"
                                            class="form-control inline-bl"
+                                           style="        width: calc(100% - 105px);"
                                            id="@Html.Raw(nameof(Model.data.user.thuong_tru_xa))"
                                            name="@Html.Raw(nameof(Model.data.user.thuong_tru_xa))"
                                            type="text"
                                            value="@Model.data.user.thuong_tru_xa"
                                            required="required" />
-                                    <div class="invalid-feedback" kind="validation">
+                                    <div class="invalid-feedback">
                                         Phường/Xã là bắt buộc
                                     </div>
                                 </div>
+
                             </div>
                             <div class="form-row">
                                 <div class="col-md-6 mb-8">
                                     <label mode="normal" for="@Html.Raw(nameof(Model.data.user.ngay_cap))" id="lb-@Html.Raw(nameof(Model.data.user.ngay_cap))">Ngày cấp:</label>
-                                    <input kind="date" mode="edit"
+                                    <input pattern="date" mode="edit"
                                            style="display:none;"
                                            class="form-control datepicker"
                                            id="@Html.Raw(nameof(Model.data.user.ngay_cap))"
@@ -246,7 +222,7 @@
                             <div class="form-row">
                                 <div class="col-md-6 mb-8">
                                     <label mode="normal" for="@Html.Raw(nameof(Model.data.user.co_gia_tri_den))" id="lb-@Html.Raw(nameof(Model.data.user.co_gia_tri_den))">Có giá trị đến ngày:</label>
-                                    <input kind="date" mode="edit"
+                                    <input pattern="date" mode="edit"
                                            style="display:none;"
                                            class="form-control datepicker"
                                            id="@Html.Raw(nameof(Model.data.user.co_gia_tri_den))"
@@ -257,44 +233,26 @@
                             <div class="form-row">
                                 <div class="col-md-12 mb-8">
                                     <label mode="normal" for="@Html.Raw(nameof(Model.data.user.noi_cap))" id="lb-@Html.Raw(nameof(Model.data.user.noi_cap))">Nơi cấp:</label>
-                                    <input kind="text" mode="edit"
+                                    <input pattern="text" mode="edit"
                                            style="display:none;"
                                            class="form-control"
                                            id="@Html.Raw(nameof(Model.data.user.noi_cap))"
                                            name="@Html.Raw(nameof(Model.data.user.noi_cap))"
                                            value="@Model.data.user.noi_cap"
                                            required="required" />
-                                    <div class="invalid-feedback" kind="validation">
+                                    <div class="invalid-feedback">
                                         Nơi cấp là bắt buộc
                                     </div>
                                 </div>
                             </div>
                             <div class="wrap">
                                 <button id="btn-edit" class="btn btn-success mr-24" type="button">Sửa</button>
-                                <button id="btn-save" class="btn btn-primary mr-24" type="button" style="display:none;" data-toggle="modal" data-target=".bd-example-modal-sm">Lưu</button>
+                                <button id="btn-save" class="btn btn-primary mr-24" type="button" style="display:none;">Lưu</button>
                                 <button id="btn-cancel" class="btn btn-danger" type="button" style="display:none;">Hủy</button>
                             </div>
                         </form>
                     </div>
                 </div>
-            </div>
-        </div>
-    </div>
-</div>
-<div class="modal fade bd-example-modal-sm" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle-1" aria-hidden="true">
-    <div class="modal-dialog modal-sm">
-        <div class="modal-content">
-            <div class="modal-header">
-                <h5 class="modal-title" id="exampleModalCenterTitle-1">Bạn có chắc muốn lưu không?</h5>
-                <button class="close" type="button" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">×</span></button>
-            </div>
-            @*<div class="modal-body">
-                ...
-
-            </div>*@
-            <div class="modal-footer">
-                <button class="btn btn-primary ml-2" type="button" id="btn-save-apply" data-dismiss="modal">Đồng ý</button>
-                <button class="btn btn-secondary" type="button" data-dismiss="modal">Hủy</button>
             </div>
         </div>
     </div>
@@ -328,21 +286,15 @@
         var template = "<b>{0} </b>";
         var normalElms;
         var editElms;
-        var validationElms;
-        var form;
         var lbNames = {};
         load = (_mode) => {
             $("[mode='edit']").hide();
             if (_mode === mode.init) {
                 normalElms = $("[mode='normal']");
                 editElms = $("[mode='edit']");
-                validationElms = $("[kind='validation']");
-                form = $('.needs-validation')[0];
             }
             else if (_mode === mode.normal) {
                 editElms.hide();
-                validationElms.hide();
-                form.classList.remove('was-validated');
                 $('#btn-edit').show();
                 $('#btn-save').hide();
                 $('#btn-cancel').hide();
@@ -371,8 +323,10 @@
         $('#btn-cancel').on('click', () => {
             load(mode.normal);
         });
-        $('#btn-save-apply').on('click', () => {
-            if (form.checkValidity()) {
+        $('#btn-save').on('click', () => {
+            var form = $('.needs-validation')[0];
+            form.checkValidity();
+            if ($.form.checkValidity()) {
                 apicontext.post(data.user, 'Edit', (response) => {
                     if (response.Data.message.popup) {
                         if (response.Data.message.status === 'success') {
@@ -384,10 +338,8 @@
                     data.user = response.Data.data.user;
                     data.update();
                     load(mode.normal);
-                    form.classList.remove('was-validated');
                 });
             }
-            form.classList.add('was-validated');
         });
     </script>
     <script>
@@ -396,16 +348,15 @@
         });
         $.input = {
             setvalue: (elm, value) => {
-                let kind = elm.attributes["kind"].value;
-                if (kind=== 'text') {
-                    $(elm).val(value);
+                if (elm.pattern === 'text') {
+                    elm.value = value;
                 }
-                if (kind === 'radio') {
+                if (elm.pattern === 'radio') {
                     if (elm.value === value) {
                         elm.checked = true;
                     }
                 }
-                if (kind === 'date') {
+                if (elm.pattern === 'date') {
                     $(elm).datepicker('setDate', new Date(value.replace(/(\d{2})-(\d{2})-(\d{4})/, "$2/$1/$3")));
                 }
             }

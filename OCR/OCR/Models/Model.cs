@@ -9,6 +9,10 @@ namespace OCR.Models
     {
         public Message message;
     }
+    public class UserDeleteModel : Model
+    {
+        public object data; 
+    }
     public class UsersModel : Model
     {
         public UsersDataset data;
@@ -23,6 +27,8 @@ namespace OCR.Models
         public int current_page;
         public int amount_pages;
         public int amount_users;
+        public string keyword;
+        public string size;
     }
 
     public class UserDataset
