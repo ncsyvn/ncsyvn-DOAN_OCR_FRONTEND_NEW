@@ -61,5 +61,18 @@ namespace OCR.Controllers
             }
             return Json(Json(result));
         }
+
+        [HttpPost]
+        public JsonResult Post(Users data)
+        {
+            UserModel result = null;
+            StringContent content = new System.Net.Http.StringContent(JsonConvert.SerializeObject(data), Encoding.UTF8, "application/json");
+            HttpResponseMessage response = client.PostAsync(UrlContants.PostUser.Format(), content).Result;
+            if (response.IsSuccessStatusCode)
+            {
+                result = response.Content.ReadAsAsync<UserModel>().Result;
+            }
+            return Json(Json(result));
+        }
     }
 }
