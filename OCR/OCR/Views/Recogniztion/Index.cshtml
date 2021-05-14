@@ -959,10 +959,10 @@
             $('#image-capture').attr('src', canvas.toDataURL("image/webp"));
         });
         $('#btn-capture-accept').click(() => {
-            $('#image').attr('src', $('#image-capture').attr('src'));
-            if ($('#image').attr('src') === "") {
-                $('#image').attr('src', default_image);
+            if ($('#image-capture').height() <= 16) {
+                return;
             }
+            $('#image').attr('src', $('#image-capture').attr('src'));
         });
     </script>
     <script>
