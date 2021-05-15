@@ -168,7 +168,7 @@
         }
         $('#search').keyup(function (e) {
             if (e.keyCode == 13) {
-                window.location.href = `/Home/Index?currentPage=${$('.active')[0].attributes['number'].value}&size=${$('#size').val()}&searchWith=${$('#search').val()}`;
+                window.location.href = `/Home/Index?currentPage=1&size=${$('#size').val()}&searchWith=${$('#search').val()}`;
             }
         });
         $("#size").change(function () {

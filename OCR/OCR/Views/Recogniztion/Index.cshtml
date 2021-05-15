@@ -787,21 +787,21 @@
                         </div>
                         <div class="col-md-12">
                             <div class="row">
-                                <div class="col-md-3"></div>
-                                <div class="col-md-6 d-flex align-items-center border-bottom-dotted-dim mb-3 justify-content-center">
-                                    <video class="card rounded" style="max-height:200px;display:block" src="~/Content/dist-assets/video/test.mp4" autoplay></video>
+                                @*<div class="col-md-3"></div>*@
+                                <div class="col-md-12 d-flex align-items-center border-bottom-dotted-dim mb-3 justify-content-center">
+                                    <video class="card rounded" style="max-height:800px;display:block" src="~/Content/dist-assets/video/test.mp4" autoplay></video>
                                 </div>
-                                <div class="col-md-3"></div>
+                                @*<div class="col-md-3"></div>*@
                             </div>
                         </div>
                         <div class="col-md-12">
                             <div class="row">
-                                <div class="col-md-3"></div>
-                                <div class="col-md-6 d-flex align-items-center border-bottom-dotted-dim pb-3 mb-3 justify-content-center">
-                                    <img id="image-capture" class="card rounded" style="max-height:200px;" src="">
-                                    <canvas class="card rounded" style="display:none;max-height:200px;"></canvas>
+                                @*<div class="col-md-3"></div>*@
+                                <div class="col-md-12 d-flex align-items-center border-bottom-dotted-dim pb-3 mb-3 justify-content-center">
+                                    <img id="image-capture" class="card rounded" style="max-height:800px;" src="">
+                                    <canvas class="card rounded" style="display:none;max-height:800px;"></canvas>
                                 </div>
-                                <div class="col-md-3"></div>
+                                @*<div class="col-md-3"></div>*@
                             </div>
                         </div>
                         <div class="col-md-12">
@@ -836,6 +836,7 @@
         var url = "@Html.Raw(OCR.Contants.UrlContants.Recognize)";
         var user = @Html.Raw(JsonConvert.SerializeObject(Model.data.user));
         var default_image = '/Content/dist-assets/images/Blank.jpg';
+        var image_type = 0;
     </script>
     <script>
         $('#btn-upload').click(() => {
@@ -853,6 +854,7 @@
                         .attr('src', e.target.result);
                 };
                 reader.readAsDataURL($('#upload')[0].files[0]);
+                image_type = 0;
             }
         });
         $('#btn-refresh').click(() => {
@@ -861,7 +863,11 @@
         });
         $('#btn-recognize').click(() => {
             let formData = new FormData()
-            formData.append('File', $('#upload')[0].files[0]);
+            if (image_type === 1) {
+                let file = DataURIToBlob($('#image').attr('src'));
+                formData.append('File', file, 'capture.jpg') 
+            } else
+                formData.append('File', $('#upload')[0].files[0]);
             $('.loading').css('display', 'block');
             apicontext.postFormData(formData, `Upload?mode=${mode.value}`, (response) => {
                 type = response.Data.data.type;
@@ -953,6 +959,9 @@
         });
         $('#btn-capture-handle').click(() => {
             let video = $('video')[0];
+            var aspect = video.videoHeight / video.videoWidth;
+            var wantedWidth = 1280; 
+            var height = Math.round(wantedWidth * aspect);
             canvas.width = video.videoWidth;
             canvas.height = video.videoHeight;
             canvas.getContext("2d").drawImage(video, 0, 0);
@@ -963,6 +972,7 @@
                 return;
             }
             $('#image').attr('src', $('#image-capture').attr('src'));
+            image_type = 1;
         });
     </script>
     <script>
@@ -977,14 +987,13 @@
             $('#btn-capture-start').hide();
             $('#btn-capture-handle').show();
             getStream();
-        });       
+        });
     </script>
     <script>
         init = () => {
             navigator.mediaDevices
                 .enumerateDevices()
                 .then(gotDevices)
-                .then(getStream)
                 .catch(handleError);
         }
         function gotDevices(deviceInfos) {
@@ -992,7 +1001,7 @@
             for (let i = 0; i !== deviceInfos.length; ++i) {
                 const deviceInfo = deviceInfos[i];
                 const option = document.createElement("option");
-                option.value = deviceInfo.deviceId;
+                option.value = deviceInfo.groupId;
                 if (deviceInfo.kind === "videoinput") {
                     option.text = deviceInfo.label || "camera " + (videoSelect.length + 1);
                     videoSelect.appendChild(option);
@@ -1012,7 +1021,7 @@
 
             const constraints = {
                 video: {
-                    deviceId: { exact: videoSelect.value },
+                    groupId: { exact: videoSelect.value },
                 }
             };
 
@@ -1029,6 +1038,18 @@
 
         function handleError(error) {
             console.error("Error: ", error);
+        }
+
+        function DataURIToBlob(dataURI) {
+            const splitDataURI = dataURI.split(',')
+            const byteString = splitDataURI[0].indexOf('base64') >= 0 ? atob(splitDataURI[1]) : decodeURI(splitDataURI[1])
+            const mimeString = splitDataURI[0].split(':')[1].split(';')[0]
+
+            const ia = new Uint8Array(byteString.length)
+            for (let i = 0; i < byteString.length; i++)
+                ia[i] = byteString.charCodeAt(i)
+
+            return new Blob([ia], { type: mimeString })
         }
     </script>
 }

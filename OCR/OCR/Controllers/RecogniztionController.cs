@@ -51,10 +51,10 @@ namespace OCR.Controllers
         public JsonResult Upload(string mode)
         {
             UserModel result = null;
-            //var content = new MultipartFormDataContent();
-            //var fileContent = new StreamContent(Request.Files[0].InputStream);
-            //content.Add(fileContent, "image", Request.Files[0].FileName);
-            HttpResponseMessage response = client.PostAsync(UrlContants.Recognize.Format(new object[] { mode }), null).Result;
+            var content = new MultipartFormDataContent();
+            var fileContent = new StreamContent(Request.Files[0].InputStream);
+            content.Add(fileContent, "image", Request.Files[0].FileName);
+            HttpResponseMessage response = client.PostAsync(UrlContants.Recognize.Format(new object[] { mode }), content).Result;
             if (response.IsSuccessStatusCode)
             {
                 result = response.Content.ReadAsAsync<UserModel>().Result;
