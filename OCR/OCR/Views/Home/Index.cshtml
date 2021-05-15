@@ -69,7 +69,7 @@
                                         <td>@item.co_gia_tri_den</td>
                                         <td>@item.ngay_cap</td>
                                         <td>@item.noi_cap</td>
-                                        <td><a class="text-success mr-2" href="/Home/Detail?id=@item.ma"><i class="nav-icon i-Pen-2 font-weight-bold"></i></a><a class="text-danger mr-2" href="#" onclick="remove(@item.ma)" data-toggle="modal" data-target=".bd-example-modal-sm"><i class="nav-icon i-Close-Window font-weight-bold"></i></a></td>
+                                        <td><a class="text-success mr-2" href="/Home/Detail?id=@item.ma"><i class="nav-icon i-Pen-2 font-weight-bold"></i></a><a class="text-danger mr-2" href="#" onclick="remove('@item.ma')" data-toggle="modal" data-target=".bd-example-modal-sm"><i class="nav-icon i-Close-Window font-weight-bold"></i></a></td>
                                     </tr>
                                     index++;
                                 }
@@ -132,7 +132,7 @@
             selection = id;
         }
         $('#btn-save-apply').on('click', () => {
-            apicontext.post({ id: selection }, 'Delete', (response) => {
+            apicontext.post({ id: selection }, `/Home/Delete`, (response) => {
                 if (response.Data.message.popup) {
                     if (response.Data.message.status === 'success') {
                         notify.success(response.Data.message.text, "Thành công");

@@ -71,7 +71,7 @@ namespace OCR.Controllers
         public JsonResult Delete(string id)
         {
             UserDeleteModel result = null;
-            HttpResponseMessage response = client.DeleteAsync(UrlContants.PutUser.Format(new object[] { id })).Result;
+            HttpResponseMessage response = client.DeleteAsync(UrlContants.DeleteUser.Format(new object[] { id })).Result;
             if (response.IsSuccessStatusCode)
             {
                 result = response.Content.ReadAsAsync<UserDeleteModel>().Result;
