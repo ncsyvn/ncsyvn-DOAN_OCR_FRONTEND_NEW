@@ -44,15 +44,18 @@
             .loading:not(:required):after {
                 content: '';
                 display: block;
-                font-size: 10px;
+                font-size: 22px;
                 width: 1em;
                 height: 1em;
-                margin-top: -0.5em;
-                -webkit-animation: spinner 150ms infinite linear;
+                margin-top: 1.8em;
+                margin-left: 1.8em;
+                z-index: 1002;
+                /*position: absolute;*/
+                /*-webkit-animation: spinner 150ms infinite linear;
                 -moz-animation: spinner 150ms infinite linear;
                 -ms-animation: spinner 150ms infinite linear;
                 -o-animation: spinner 150ms infinite linear;
-                animation: spinner 150ms infinite linear;
+                animation: spinner 150ms infinite linear;*/
                 border-radius: 0.5em;
                 -webkit-box-shadow: rgba(255,255,255, 0.75) 1.5em 0 0 0, rgba(255,255,255, 0.75) 1.1em 1.1em 0 0, rgba(255,255,255, 0.75) 0 1.5em 0 0, rgba(255,255,255, 0.75) -1.1em 1.1em 0 0, rgba(255,255,255, 0.75) -1.5em 0 0 0, rgba(255,255,255, 0.75) -1.1em -1.1em 0 0, rgba(255,255,255, 0.75) 0 -1.5em 0 0, rgba(255,255,255, 0.75) 1.1em -1.1em 0 0;
                 box-shadow: rgba(255,255,255, 0.75) 1.5em 0 0 0, rgba(255,255,255, 0.75) 1.1em 1.1em 0 0, rgba(255,255,255, 0.75) 0 1.5em 0 0, rgba(255,255,255, 0.75) -1.1em 1.1em 0 0, rgba(255,255,255, 0.75) -1.5em 0 0 0, rgba(255,255,255, 0.75) -1.1em -1.1em 0 0, rgba(255,255,255, 0.75) 0 -1.5em 0 0, rgba(255,255,255, 0.75) 1.1em -1.1em 0 0;
@@ -131,6 +134,11 @@
             transform: rotate(360deg);
         }
     }
+    svg {
+        width: 25%;
+        position:absolute;
+        z-index:1001;
+    }
 </style>
 <div class="breadcrumb">
     <ul>
@@ -207,7 +215,7 @@
                                                    class="form-control inline-bl datepicker"
                                                    id="@Html.Raw(nameof(Model.data.user.ngay_sinh))"
                                                    name="@Html.Raw(nameof(Model.data.user.ngay_sinh))"
-                                                   data-date-format="mm/dd/yyyy">
+                                                   data-date-format="dd/mm/yyyy">
                                         </div>
                                     </div>
                                     <div class="form-row">
@@ -391,10 +399,11 @@
                                                    class="form-control inline-bl datepicker"
                                                    id="@Html.Raw(nameof(Model.data.user.co_gia_tri_den))"
                                                    name="@Html.Raw(nameof(Model.data.user.co_gia_tri_den))"
-                                                   data-date-format="mm/dd/yyyy">
+                                                   data-date-format="dd/mm/yyyy">
                                         </div>
                                     </div>
                                     <div class="col-md-12 d-flex align-items-center border-bottom-dotted-dim pb-3 mb-3 justify-content-center">
+                                        <button class="btn btn-light mr-24 btn-result" type="button" data-toggle="modal" data-target=".modal-result" style="display:none;">Xem ảnh</button>
                                         <button class="btn btn-twitter mr-24 btn-next" type="button">Bước tiếp</button>
                                     </div>
                                 </form>
@@ -413,7 +422,7 @@
                                                    class="form-control inline-bl datepicker"
                                                    id="@Html.Raw(nameof(Model.data.user.ngay_cap))"
                                                    name="@Html.Raw(nameof(Model.data.user.ngay_cap))"
-                                                   data-date-format="mm/dd/yyyy">
+                                                   data-date-format="dd/mm/yyyy">
                                         </div>
                                     </div>
                                     <div class="form-row">
@@ -432,6 +441,7 @@
                                     </div>
                                     <div class="col-md-12 d-flex align-items-center border-bottom-dotted-dim pb-3 mb-3 justify-content-center">
                                         <button class="btn btn-twitter mr-24 btn-previous" type="button">Quay lại</button>
+                                        <button class="btn btn-light mr-24 btn-result" type="button" data-toggle="modal" data-target=".modal-result" style="display:none;">Xem ảnh</button>
                                         <button class="btn btn-success mr-24 btn-save" type="button" data-toggle="modal" data-target=".bd-example-modal-sm">Lưu</button>
                                     </div>
                                 </form>
@@ -480,10 +490,10 @@
                                                    class="form-control inline-bl datepicker"
                                                    id="@Html.Raw(nameof(Model.data.user.ngay_sinh))"
                                                    name="@Html.Raw(nameof(Model.data.user.ngay_sinh))"
-                                                   data-date-format="mm/dd/yyyy">
+                                                   data-date-format="dd/mm/yyyy">
                                         </div>
                                     </div>
-                                    <div class="form-row">
+                                    @*<div class="form-row">
                                         <div class="form-group col-md-4">
                                             <label style="width:150px;" for="@Html.Raw(nameof(Model.data.user.gioi_tinh))" id="lb-@Html.Raw(nameof(Model.data.user.gioi_tinh))" style="        color: #47404f;
         font-size: 0.813rem;">Giới tính:</label>
@@ -506,7 +516,7 @@
                                                 </div>
                                             </div>
                                         </div>
-                                    </div>
+                                    </div>*@
                                     <div class="form-row">
                                         <div class="col-md-8 mb-8">
                                             <label style="width:150px;" for="@Html.Raw(nameof(Model.data.user.que_quan))" id="lb-@Html.Raw(nameof(Model.data.user.que_quan))">Quê quán:</label>
@@ -649,10 +659,11 @@
                                                    class="form-control inline-bl datepicker"
                                                    id="@Html.Raw(nameof(Model.data.user.co_gia_tri_den))"
                                                    name="@Html.Raw(nameof(Model.data.user.co_gia_tri_den))"
-                                                   data-date-format="mm/dd/yyyy">
+                                                   data-date-format="dd/mm/yyyy">
                                         </div>
                                     </div>
                                     <div class="col-md-12 d-flex align-items-center border-bottom-dotted-dim pb-3 mb-3 justify-content-center">
+                                        <button class="btn btn-light mr-24 btn-result" type="button" data-toggle="modal" data-target=".modal-result" style="display:none;">Xem ảnh</button>
                                         <button class="btn btn-twitter mr-24 btn-next" type="button">Bước tiếp</button>
                                     </div>
                                 </form>
@@ -711,7 +722,7 @@
                                                    class="form-control inline-bl datepicker"
                                                    id="@Html.Raw(nameof(Model.data.user.ngay_cap))"
                                                    name="@Html.Raw(nameof(Model.data.user.ngay_cap))"
-                                                   data-date-format="mm/dd/yyyy">
+                                                   data-date-format="dd/mm/yyyy">
                                         </div>
                                     </div>
                                     <div class="form-row">
@@ -730,6 +741,7 @@
                                     </div>
                                     <div class="col-md-12 d-flex align-items-center border-bottom-dotted-dim pb-3 mb-3 justify-content-center">
                                         <button class="btn btn-twitter mr-24 btn-previous" type="button">Quay lại</button>
+                                        <button class="btn btn-light mr-24 btn-result" type="button" data-toggle="modal" data-target=".modal-result" style="display:none;">Xem ảnh</button>
                                         <button class="btn btn-success mr-24 btn-save" type="button" data-toggle="modal" data-target=".bd-example-modal-sm">Lưu</button>
                                     </div>
                                 </form>
@@ -742,7 +754,19 @@
     </div>
     <!-- end of col-->
 </div>
-<div class="loading" style="display:none;">Loading&#8230;</div>
+<div class="loading" style="display:none;z-index:1000;">
+    <svg id="animated" viewbox="0 0 100 100" style="height:100px;width:100px;">
+        <circle cx="50" cy="50" r="45" fill="#FDB900" />
+        <path fill="none" stroke-linecap="round" stroke-width="5" stroke="#fff"
+              stroke-dasharray="0,251.2"
+              d="M50 10
+           a 40 40 0 0 1 0 80
+           a 40 40 0 0 1 0 -80">
+            <animate attributeName="stroke-dasharray" from="0,251.2" to="251.2,0" dur="20s" begin="btn-recognize.click"/>
+        </path>
+        <text id="count" x="50" y="50" text-anchor="middle" dy="7" font-size="20">100%</text>
+    </svg>
+</div>
 <div class="modal fade bd-example-modal-sm" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle-1" aria-hidden="true">
     <div class="modal-dialog modal-sm">
         <div class="modal-content">
@@ -824,6 +848,30 @@
         </div>
     </div>
 </div>
+<div class="modal fade modal-result" tabindex="-1" role="dialog" aria-labelledby="modal-result" aria-hidden="true">
+    <div class="modal-dialog modal-lg">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title" id="exampleModalCenterTitle">Kết quả</h5>
+                <button class="close" type="button" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">×</span></button>
+            </div>
+            <div class="modal-body">
+                <div class="row">
+                    <div class="col-md-12">
+                        <div class="row">
+                            <div class="col-md-12 d-flex align-items-center border-bottom-dotted-dim pb-3 mb-3 justify-content-center">
+                                <img id="image-result" class="card rounded" style="max-height:400px;" src="">                                
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="modal-footer">                
+                <button class="btn btn-primary ml-2" type="button" data-dismiss="modal" aria-label="Close">Hủy</button>
+            </div>
+        </div>
+    </div>
+</div>
 @section childscript {
     <script>
         var type = 0;
@@ -837,6 +885,7 @@
         var user = @Html.Raw(JsonConvert.SerializeObject(Model.data.user));
         var default_image = '/Content/dist-assets/images/Blank.jpg';
         var image_type = 0;
+        var count = $(('#count'));
     </script>
     <script>
         $('#btn-upload').click(() => {
@@ -867,9 +916,9 @@
                 let file = DataURIToBlob($('#image').attr('src'));
                 formData.append('File', file, 'capture.jpg') 
             } else
-                formData.append('File', $('#upload')[0].files[0]);
-            $('.loading').css('display', 'block');
-            apicontext.postFormData(formData, `Upload?mode=${mode.value}`, (response) => {
+                formData.append('File', $('#upload')[0].files[0]);   
+            loadingStart();
+            apicontext.postFormData(formData, `Upload?mode=${mode.value}`, (response) => {                
                 type = response.Data.data.type;
                 if (type == 0) {
                     if (step === 1) {
@@ -894,7 +943,10 @@
 
                 }
                 fillData(response.Data.data.user, response.Data.data.type);
-                $('.loading').css('display', 'none');
+                loadingEnd()
+                $('.btn-result').hide();
+                $(`#id${type}-${step} .btn-result`).show();  
+                $('#image-result').attr('src', response.Data.data.user.link_anh);
             });
         });
         $('#id0-1 .btn-next').click(() => {
@@ -904,6 +956,8 @@
             step = 2;
             mode.value = mode.behind;
             fillDataOnly(user, type);
+            $('#image').attr('src', default_image);
+            $('#upload').val("");
         });
         $('#id0-2 .btn-previous').click(() => {
             $('#id0-2').hide();
@@ -912,6 +966,8 @@
             step = 1;
             mode.value = mode.front;
             fillDataOnly(user, type);
+            $('#image').attr('src', default_image);
+            $('#upload').val("");
         });
         $('#id1-1 .btn-next').click(() => {
             $('#id1-1').hide();
@@ -920,6 +976,8 @@
             step = 2;
             mode.value = mode.behind;
             fillDataOnly(user, type);
+            $('#image').attr('src', default_image);
+            $('#upload').val("");
         });
         $('#id1-2 .btn-previous').click(() => {
             $('#id1-2').hide();
@@ -928,6 +986,8 @@
             step = 1;
             mode.value = mode.front;
             fillDataOnly(user, type);
+            $('#image').attr('src', default_image);
+            $('#upload').val("");
         });
         fillData = (data, _type) => {
             if (mode.value === mode.front) {
@@ -941,6 +1001,11 @@
         fillDataOnly = (data, _type) => {
             for (let item of $(`#id${_type}-${step} input[mode="${mode.value}"]`)) {
                 $.input.setvalue(item, data[item.name]);
+            }            
+            $('#image-result').attr('src', data.link_anh);
+            $('.btn-result').hide();
+            if ($('#image-result').height() > 16) {                
+                $(`#id${type}-${step} .btn-result`).show();
             }
         }
     </script>
@@ -1050,6 +1115,23 @@
                 ia[i] = byteString.charCodeAt(i)
 
             return new Blob([ia], { type: mimeString })
+        }
+    </script>
+    <script>
+        loadingStart = () => {
+            $('.loading').show();
+            $({ Counter: 0 }).animate({ Counter: "100%" }, {
+                duration: 20000,
+                easing: 'linear',
+                step: function () {
+                    count.text(Math.ceil(this.Counter) + "%");
+                }
+            });
+            $('animate')[0].beginElement();
+        }
+        loadingEnd = () => {
+            $('.loading').hide();
+            count.text("100%");
         }
     </script>
 }
