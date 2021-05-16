@@ -16,7 +16,6 @@ namespace OCR.Controllers
 {
     public class RecogniztionController : Controller
     {
-        static HttpClient client = new HttpClient();
         // GET: Recogniztion
         public ActionResult Index()
         {
@@ -50,21 +49,24 @@ namespace OCR.Controllers
         [HttpPost]
         public JsonResult Upload(string mode)
         {
+            HttpClient client = new HttpClient();
+            client.Timeout = TimeSpan.FromSeconds(100);
             UserModel result = null;
             var content = new MultipartFormDataContent();
             var fileContent = new StreamContent(Request.Files[0].InputStream);
-            content.Add(fileContent, "image", Request.Files[0].FileName);
+            content.Add(fileContent, "image", Request.Files[0].FileName);            
             HttpResponseMessage response = client.PostAsync(UrlContants.Recognize.Format(new object[] { mode }), content).Result;
             if (response.IsSuccessStatusCode)
             {
                 result = response.Content.ReadAsAsync<UserModel>().Result;
-            }
+            }            
             return Json(Json(result));
         }
 
         [HttpPost]
         public JsonResult Post(Users data)
         {
+            HttpClient client = new HttpClient();
             UserModel result = null;
             StringContent content = new System.Net.Http.StringContent(JsonConvert.SerializeObject(data), Encoding.UTF8, "application/json");
             HttpResponseMessage response = client.PostAsync(UrlContants.PostUser.Format(), content).Result;
