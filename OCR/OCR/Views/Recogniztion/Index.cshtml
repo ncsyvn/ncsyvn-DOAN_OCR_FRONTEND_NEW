@@ -134,10 +134,11 @@
             transform: rotate(360deg);
         }
     }
+
     svg {
         width: 25%;
-        position:absolute;
-        z-index:1001;
+        position: absolute;
+        z-index: 1001;
     }
 </style>
 <div class="breadcrumb">
@@ -494,29 +495,29 @@
                                         </div>
                                     </div>
                                     @*<div class="form-row">
-                                        <div class="form-group col-md-4">
-                                            <label style="width:150px;" for="@Html.Raw(nameof(Model.data.user.gioi_tinh))" id="lb-@Html.Raw(nameof(Model.data.user.gioi_tinh))" style="        color: #47404f;
-        font-size: 0.813rem;">Giới tính:</label>
-                                            <div class="inline-bl" style="width: calc(100% - 155px);">
-                                                <div class="ul-form__radio-inline">
-                                                    <label class="ul-radio__position radio radio-primary form-check-inline">
-                                                        <input kind="radio" mode="0"
-                                                               type="radio"
-                                                               name="@Html.Raw(nameof(Model.data.user.gioi_tinh))"
-                                                               value="Nam"
-                                                               checked="@(Model.data.user.gioi_tinh.ToLower().Equals("nam")?true:false)" /><span class="ul-form__radio-font">Nam</span><span class="checkmark"></span>
-                                                    </label>
-                                                    <label class="ul-radio__position radio radio-primary">
-                                                        <input kind="radio" mode="0"
-                                                               type="radio"
-                                                               name="@Html.Raw(nameof(Model.data.user.gioi_tinh))"
-                                                               value="Nữ"
-                                                               checked="@(Model.data.user.gioi_tinh.ToLower().Equals("nam")?false:true)" /><span class="ul-form__radio-font">Nữ</span><span class="checkmark"></span>
-                                                    </label>
-                                                </div>
-                                            </div>
-                                        </div>
-                                    </div>*@
+                                                                        <div class="form-group col-md-4">
+                                                                            <label style="width:150px;" for="@Html.Raw(nameof(Model.data.user.gioi_tinh))" id="lb-@Html.Raw(nameof(Model.data.user.gioi_tinh))" style="        color: #47404f;
+                                        font-size: 0.813rem;">Giới tính:</label>
+                                                                            <div class="inline-bl" style="width: calc(100% - 155px);">
+                                                                                <div class="ul-form__radio-inline">
+                                                                                    <label class="ul-radio__position radio radio-primary form-check-inline">
+                                                                                        <input kind="radio" mode="0"
+                                                                                               type="radio"
+                                                                                               name="@Html.Raw(nameof(Model.data.user.gioi_tinh))"
+                                                                                               value="Nam"
+                                                                                               checked="@(Model.data.user.gioi_tinh.ToLower().Equals("nam")?true:false)" /><span class="ul-form__radio-font">Nam</span><span class="checkmark"></span>
+                                                                                    </label>
+                                                                                    <label class="ul-radio__position radio radio-primary">
+                                                                                        <input kind="radio" mode="0"
+                                                                                               type="radio"
+                                                                                               name="@Html.Raw(nameof(Model.data.user.gioi_tinh))"
+                                                                                               value="Nữ"
+                                                                                               checked="@(Model.data.user.gioi_tinh.ToLower().Equals("nam")?false:true)" /><span class="ul-form__radio-font">Nữ</span><span class="checkmark"></span>
+                                                                                    </label>
+                                                                                </div>
+                                                                            </div>
+                                                                        </div>
+                                                                    </div>*@
                                     <div class="form-row">
                                         <div class="col-md-8 mb-8">
                                             <label style="width:150px;" for="@Html.Raw(nameof(Model.data.user.que_quan))" id="lb-@Html.Raw(nameof(Model.data.user.que_quan))">Quê quán:</label>
@@ -762,7 +763,7 @@
               d="M50 10
            a 40 40 0 0 1 0 80
            a 40 40 0 0 1 0 -80">
-            <animate attributeName="stroke-dasharray" from="0,251.2" to="251.2,0" dur="20s" begin="btn-recognize.click"/>
+            <animate attributeName="stroke-dasharray" from="0,251.2" to="251.2,0" dur="20s" begin="btn-recognize.click" />
         </path>
         <text id="count" x="50" y="50" text-anchor="middle" dy="7" font-size="20">100%</text>
     </svg>
@@ -860,13 +861,13 @@
                     <div class="col-md-12">
                         <div class="row">
                             <div class="col-md-12 d-flex align-items-center border-bottom-dotted-dim pb-3 mb-3 justify-content-center">
-                                <img id="image-result" class="card rounded" style="max-height:400px;" src="">                                
+                                <img id="image-result" class="card rounded" style="max-height:400px;" src="">
                             </div>
                         </div>
                     </div>
                 </div>
             </div>
-            <div class="modal-footer">                
+            <div class="modal-footer">
                 <button class="btn btn-primary ml-2" type="button" data-dismiss="modal" aria-label="Close">Hủy</button>
             </div>
         </div>
@@ -914,11 +915,11 @@
             let formData = new FormData()
             if (image_type === 1) {
                 let file = DataURIToBlob($('#image').attr('src'));
-                formData.append('File', file, 'capture.jpg') 
+                formData.append('File', file, 'capture.jpg')
             } else
-                formData.append('File', $('#upload')[0].files[0]);   
+                formData.append('File', $('#upload')[0].files[0]);
             loadingStart();
-            apicontext.postFormData(formData, `Upload?mode=${mode.value}`, (response) => {                
+            apicontext.postFormData(formData, `Upload?mode=${mode.value}`, (response) => {
                 type = response.Data.data.type;
                 if (type == 0) {
                     if (step === 1) {
@@ -945,7 +946,7 @@
                 fillData(response.Data.data.user, response.Data.data.type);
                 loadingEnd()
                 $('.btn-result').hide();
-                $(`#id${type}-${step} .btn-result`).show();  
+                $(`#id${type}-${step} .btn-result`).show();
                 $('#image-result').attr('src', response.Data.data.user.link_anh);
             });
         });
@@ -1001,10 +1002,14 @@
         fillDataOnly = (data, _type) => {
             for (let item of $(`#id${_type}-${step} input[mode="${mode.value}"]`)) {
                 $.input.setvalue(item, data[item.name]);
-            }            
-            $('#image-result').attr('src', data.link_anh);
+            }
+            if (_type === 0) {
+                $('#image-result').attr('src', data.anh_mat_truoc);
+            } else {
+                $('#image-result').attr('src', data.anh_mat_sau);
+            }
             $('.btn-result').hide();
-            if ($('#image-result').height() > 16) {                
+            if ($('#image-result').height() > 16) {
                 $(`#id${type}-${step} .btn-result`).show();
             }
         }
@@ -1025,7 +1030,7 @@
         $('#btn-capture-handle').click(() => {
             let video = $('video')[0];
             var aspect = video.videoHeight / video.videoWidth;
-            var wantedWidth = 1280; 
+            var wantedWidth = 1280;
             var height = Math.round(wantedWidth * aspect);
             canvas.width = video.videoWidth;
             canvas.height = video.videoHeight;
