@@ -1027,9 +1027,9 @@
             $('#upload').val("");
         });
         fillData = (data, _type) => {
-            if (mode.value === mode.front) {
-                user = {};
-            }
+            //if (mode.value === mode.front) {
+            //    user = {};
+            //}
             for (let item of $(`#id${_type}-${step} input[mode="${mode.value}"]`)) {
                 $.input.setvalue(item, data[item.name]);
                 user[item.name] = data[item.name];
@@ -1039,13 +1039,13 @@
             for (let item of $(`#id${_type}-${step} input[mode="${mode.value}"]`)) {
                 $.input.setvalue(item, data[item.name]);
             }
-            if (_type === 0) {
+            if (step === 1) {
                 $('#image-result').attr('src', data.anh_mat_truoc);
             } else {
                 $('#image-result').attr('src', data.anh_mat_sau);
             }
             $('.btn-result').hide();
-            if ($('#image-result').height() > 16) {
+            if ($('#image-result')[0].height > 16) {
                 $(`#id${type}-${step} .btn-result`).show();
             }
         }
