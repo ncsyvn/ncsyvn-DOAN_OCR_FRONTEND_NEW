@@ -1,0 +1,30 @@
+﻿
+<!DOCTYPE html>
+
+
+<!-- Mirrored from demos.ui-lib.com/gull/html/sessions/signin.html by HTTrack Website Copier/3.x [XR&CO'2014], Sat, 29 May 2021 03:39:29 GMT -->
+<!-- Added by HTTrack -->
+<meta http-equiv="content-type" content="text/html;charset=utf-8" /><!-- /Added by HTTrack -->
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width,initial-scale=1">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Signin | Gull Admin Template</title>
+    <link href="https://fonts.googleapis.com/css?family=Nunito:300,400,400i,600,700,800,900" rel="stylesheet">
+    <link href="~/Content/dist-assets/css/themes/lite-purple.css" rel="stylesheet">
+    <link rel="stylesheet" href="~/Content/dist-assets/css/plugins/fontawesome-5.css" />
+    <link rel="stylesheet" href="~/Content/dist-assets/css/plugins/toastr.css">
+</head>
+<div class="auth-layout-wrap" style="background-image: url(/Content/dist-assets/images/tech-2.jpg)">
+    <div class="auth-content">
+        <div class="card o-hidden">
+            @RenderBody()
+        </div>
+    </div>
+</div>
+<script src="~/Content/dist-assets/js/plugins/jquery-3.3.1.min.js"></script>
+<script src="~/Content/dist-assets/js/plugins/bootstrap.bundle.min.js"></script>
+<script src="~/Content/dist-assets/js/plugins/toastr.min.js"></script>
+<script src="~/Content/dist-assets/js/scripts/toastr.script.min.js"></script>
+<script src="~/Scripts/jcof.min.js"></script>
+@RenderSection("childscript", required: false)

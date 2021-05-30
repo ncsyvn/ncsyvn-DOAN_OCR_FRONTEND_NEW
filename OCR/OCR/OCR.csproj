@@ -123,6 +123,10 @@
     <Compile Include="App_Start\BundleConfig.cs" />
     <Compile Include="App_Start\FilterConfig.cs" />
     <Compile Include="App_Start\RouteConfig.cs" />
+    <Compile Include="Attributes\RoleAttribute.cs" />
+    <Compile Include="Attributes\SessionAttribute .cs" />
+    <Compile Include="Controllers\UserController.cs" />
+    <Compile Include="Enums\RoleContants.cs" />
     <Compile Include="Contants\UrlContants.cs" />
     <Compile Include="Controllers\HomeController.cs" />
     <Compile Include="Controllers\RecogniztionController.cs" />
@@ -130,6 +134,7 @@
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
+    <Compile Include="Models\Account.cs" />
     <Compile Include="Models\Message.cs" />
     <Compile Include="Models\Model.cs" />
     <Compile Include="Models\Users.cs" />
@@ -142,6 +147,7 @@
     <Content Include="Content\bootstrap.min.css" />
     <Content Include="Content\dist-assets\css\plugins\bootstrap-datepicker.min.css" />
     <Content Include="Content\dist-assets\images\Blank.jpg" />
+    <Content Include="Content\dist-assets\images\photo-long-3.jpg" />
     <Content Include="Content\dist-assets\js\plugins\bootstrap-datepicker.min.js" />
     <Content Include="Content\dist-assets\css\img\tour\cross.html" />
     <Content Include="Content\dist-assets\css\plugins\animate.css" />
@@ -302,6 +308,9 @@
     <Content Include="Views\Home\Detail.cshtml" />
     <Content Include="Views\Home\Index.cshtml" />
     <Content Include="Views\Recogniztion\Index.cshtml" />
+    <Content Include="Views\Shared\_LayoutOther.cshtml" />
+    <Content Include="Views\User\Login.cshtml" />
+    <Content Include="Views\User\Register.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />

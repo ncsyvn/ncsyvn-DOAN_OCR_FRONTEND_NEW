@@ -10,12 +10,15 @@ using System.Web.Mvc;
 using System.Threading.Tasks;
 using Newtonsoft.Json;
 using System.Text;
+using OCR.Attributes;
 
 namespace OCR.Controllers
 {
     public class HomeController : Controller
     {
         static HttpClient client = new HttpClient();
+        [Session]
+        [Role(Roles = new string[] { RoleConst.admin })]
         public ActionResult Index(string currentPage = "1", string size = "10", string searchWith = "")
         {
             UsersModel data = null;
@@ -41,7 +44,8 @@ namespace OCR.Controllers
         //    data.data.current_page = Convert.ToInt32(_params[0]);
         //    return RedirectToAction("Index", new { currentPage = _params[0], size = _params[1], searchWith = _params[2] });
         //}
-
+        [Session]
+        [Role(Roles = new string[] { RoleConst.admin, RoleConst.user })]
         public ActionResult Detail(string id)
         {
             UserModel data = null;
@@ -53,8 +57,9 @@ namespace OCR.Controllers
             ViewBag.Title = "";
             return View(data);
         }
-
-        [HttpPost]
+        [Session]
+        [Role(Roles = new string[] { RoleConst.admin, RoleConst.user })]
+        [HttpPost]        
         public JsonResult Edit(Users data)
         {
             UserModel result = null;
@@ -66,7 +71,8 @@ namespace OCR.Controllers
             }
             return Json(Json(result));
         }
-
+        [Session]
+        [Role(Roles = new string[] { RoleConst.admin})]
         [HttpPost]
         public JsonResult Delete(string id)
         {
@@ -78,7 +84,7 @@ namespace OCR.Controllers
             }
             return Json(Json(result));
         }
-
+        [Session]
         public ActionResult Test()
         {
             UserModel data = null;

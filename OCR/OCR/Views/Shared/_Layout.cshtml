@@ -24,6 +24,7 @@
         .inline-bl {
             display: inline-block;
         }
+
         .center {
             position: relative;
             left: 50%;
@@ -45,8 +46,19 @@
                 <div class="side-nav">
                     <div class="main-menu">
                         <ul class="metismenu" id="menu">
-                            <li class="Ul_li--hover"><a href="/Home/Index"><i class="i-Business-Mens text-20 mr-2 text-muted"></i><span class="item-name text-15 text-muted">DS người dùng</span></a></li>
-                            <li class="Ul_li--hover"><a href="/Recogniztion/Index"><i class="i-Data-Upload text-20 mr-2 text-muted"></i><span class="item-name text-15 text-muted">eKYC</span></a></li>
+                            @{
+                                if (Session["role"].Equals("user"))
+                                {
+
+                                    <li class="Ul_li--hover"><a href="/Home/Detail?id=@Session["user-id"]"><i class="i-Business-Mens text-20 mr-2 text-muted"></i><span class="item-name text-15 text-muted">Tài khoản</span></a></li>
+                                    <li class="Ul_li--hover"><a href="/Recogniztion/Index"><i class="i-Data-Upload text-20 mr-2 text-muted"></i><span class="item-name text-15 text-muted">eKYC</span></a></li>
+                                }
+                                else
+                                {
+                                    <li class="Ul_li--hover"><a href="/Home/Index"><i class="i-Business-Mens text-20 mr-2 text-muted"></i><span class="item-name text-15 text-muted">DS người dùng</span></a></li>
+                                }
+                            }
+                            <li class="Ul_li--hover"><a href="/User/SignOut"><i class="i-Arrow-Inside text-20 mr-2 text-muted"></i><span class="item-name text-15 text-muted">Đăng xuất</span></a></li>
                         </ul>
                     </div>
                 </div>
@@ -102,7 +114,7 @@
     <script src="~/Content/dist-assets/js/plugins/bootstrap-datepicker.min.js"></script>
     <script src="~/Content/dist-assets/js/plugins/toastr.min.js"></script>
     <script src="~/Content/dist-assets/js/scripts/toastr.script.min.js"></script>
-    <script src="~/Scripts/jcof.min.js"></script>    
+    <script src="~/Scripts/jcof.min.js"></script>
     @RenderSection("childscript", required: false)
 </body>
 </html>

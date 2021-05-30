@@ -13,6 +13,15 @@ namespace OCR.Contants
         public static string PutUser = $"{BaseUrl}/api/v1/users/{{0}}";
         public static string PostUser = $"{BaseUrl}/api/v1/users";
         public static string DeleteUser = $"{BaseUrl}/api/v1/users/{{0}}";
-        public static string Recognize = $"{BaseUrl}/api/v1/images?face={{0}}";        
+        public static string Recognize = $"{BaseUrl}/api/v1/images?face={{0}}";
+        public static string SignIn = $"{BaseUrl}/api/v1/auth/signin";
+        public static string SignUp = $"{BaseUrl}/api/v1/auth/signup";
+        public static string SignOut = $"{BaseUrl}/api/v1/auth/signout";
+    }
+
+    public class RoleConst
+    {
+        public const string user = "user";
+        public const string admin = "admin";
     }
 }

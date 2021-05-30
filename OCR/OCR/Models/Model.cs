@@ -21,6 +21,10 @@ namespace OCR.Models
     {
         public UserDataset data;
     }
+    public class AccountModel: Model
+    {
+        public Account data;
+    }
     public class UsersDataset
     {
         public List<Users> users;
