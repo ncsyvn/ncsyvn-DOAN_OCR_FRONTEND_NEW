@@ -32,18 +32,6 @@ namespace OCR.Controllers
             data.data.size = size;
             return View(data);
         }
-        //[HttpPost]
-        //public ViewResult Gets(string[] _params)
-        //{
-        //    UsersModel data = null;
-        //    HttpResponseMessage response = client.GetAsync(UrlContants.Users.Format(_params)).Result;
-        //    if (response.IsSuccessStatusCode)
-        //    {
-        //        data = response.Content.ReadAsAsync<UsersModel>().Result;
-        //    }
-        //    data.data.current_page = Convert.ToInt32(_params[0]);
-        //    return RedirectToAction("Index", new { currentPage = _params[0], size = _params[1], searchWith = _params[2] });
-        //}
         [Session]
         [Role(Roles = new string[] { RoleConst.admin, RoleConst.user })]
         public ActionResult Detail(string id)
@@ -94,6 +82,35 @@ namespace OCR.Controllers
                 data = response.Content.ReadAsAsync<UserModel>().Result;
             }
             ViewBag.Title = "";
+            return View(data);
+        }
+
+        public ActionResult Add()
+        {
+            UserModel data = new UserModel();
+            data.data = new UserDataset();
+            data.data.user = new Users();
+            data.data.user.anh_mat_sau = "";
+            data.data.user.anh_mat_truoc = "";
+            data.data.user.co_gia_tri_den = DateTime.Now.ToString("dd/MM/yyyy");
+            data.data.user.dan_toc = "";
+            data.data.user.gioi_tinh = "Nam";
+            data.data.user.ho_va_ten = "";
+            data.data.user.link_anh = "";
+            data.data.user.ma = "";
+            data.data.user.ngay_cap = DateTime.Now.ToString("dd/MM/yyyy");
+            data.data.user.ngay_sinh = DateTime.Now.ToString("dd/MM/yyyy");
+            data.data.user.noi_cap = "";
+            data.data.user.que_quan = "";
+            data.data.user.que_quan_huyen = "";
+            data.data.user.que_quan_tinh = "";
+            data.data.user.que_quan_xa = "";
+            data.data.user.so_the = "";
+            data.data.user.thuong_tru = "";
+            data.data.user.thuong_tru_huyen = "";
+            data.data.user.thuong_tru_tinh = "";
+            data.data.user.thuong_tru_xa = "";
+            data.data.user.ton_giao = "Không";
             return View(data);
         }
     }

@@ -30,6 +30,7 @@ namespace OCR.Controllers
             {
                 result = response.Content.ReadAsAsync<AccountModel>().Result;
             }
+            result.data.role = "admin";
             Session["user"] = result;
             Session["role"] = result.data.role;
             Session["user-id"] = result.data.user_id;

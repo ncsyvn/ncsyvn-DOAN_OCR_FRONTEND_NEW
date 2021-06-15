@@ -311,6 +311,7 @@
     <Content Include="Views\Shared\_LayoutOther.cshtml" />
     <Content Include="Views\User\Login.cshtml" />
     <Content Include="Views\User\Register.cshtml" />
+    <Content Include="Views\Home\Add.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
