@@ -17,11 +17,25 @@
             <div class="row">
                 <div class="col-md-4">
                     <div class="card-body">
-                        <div class="d-flex align-items-center border-bottom-dotted-dim pb-3 mb-3 justify-content-center">
-                            <img class="rounded mr-3" src="@Model.data.user.anh_mat_truoc" alt="">
+                        <h4 id="title" class="card-title mb-3 text-center">Mặt trước</h4>
+                        <div id="select-image" class="row">
+                            <div class="col-md-12 d-flex align-items-center border-bottom-dotted-dim pb-3 mb-3 justify-content-center">
+                                <img id="image_@Html.Raw(nameof(Model.data.user.anh_mat_truoc))" class="card rounded" src="~/Content/dist-assets/images/Blank.jpg" alt="" style="max-height:200px">
+                            </div>
+                            <div class="col-md-12 d-flex align-items-center border-bottom-dotted-dim pb-3 mb-3 justify-content-center">
+                                <button id="btn-upload-1" class="btn btn-light mr-24" type="button">Tải ảnh lên</button>
+                                <input type="file" name="@Html.Raw(nameof(Model.data.user.anh_mat_truoc))" id="@Html.Raw(nameof(Model.data.user.anh_mat_truoc))" style="display:none;" />
+                            </div>
                         </div>
-                        <div class="d-flex align-items-center border-bottom-dotted-dim pb-3 mb-3 justify-content-center">
-                            <img class="rounded mr-3" src="@Model.data.user.anh_mat_sau" alt="">
+                        <h4 id="title" class="card-title mb-3 text-center">Mặt sau</h4>
+                        <div id="select-image" class="row">
+                            <div class="col-md-12 d-flex align-items-center border-bottom-dotted-dim pb-3 mb-3 justify-content-center">
+                                <img id="image_@Html.Raw(nameof(Model.data.user.anh_mat_sau))" class="card rounded" src="~/Content/dist-assets/images/Blank.jpg" alt="" style="max-height:200px">
+                            </div>
+                            <div class="col-md-12 d-flex align-items-center border-bottom-dotted-dim pb-3 mb-3 justify-content-center">
+                                <button id="btn-upload-2" class="btn btn-light mr-24" type="button">Tải ảnh lên</button>
+                                <input type="file" name="@Html.Raw(nameof(Model.data.user.anh_mat_sau))" id="@Html.Raw(nameof(Model.data.user.anh_mat_sau))" style="display:none;" />
+                            </div>
                         </div>
                     </div>
                 </div>
@@ -341,9 +355,9 @@
 </div>
 @section childscript {
     <script>
-        $('#@Html.Raw(nameof(Model.data.user.ngay_sinh))').datepicker('setDate', new Date("@Model.data.user.ngay_sinh".replace(/(\d{2})-(\d{2})-(\d{4})/, "$2/$1/$3")));
-        $('#@Html.Raw(nameof(Model.data.user.ngay_cap))').datepicker('setDate', new Date("@Model.data.user.ngay_cap".replace(/(\d{2})-(\d{2})-(\d{4})/, "$2/$1/$3")));
-        $('#@Html.Raw(nameof(Model.data.user.co_gia_tri_den))').datepicker('setDate', new Date("@Model.data.user.co_gia_tri_den".replace(/(\d{2})-(\d{2})-(\d{4})/, "$2/$1/$3")));
+        $('#@Html.Raw(nameof(Model.data.user.ngay_sinh))').datepicker('setDate', new Date("@Model.data.user.ngay_sinh".replace(/(\d{2})\/(\d{2})\/(\d{4})/, "$2/$1/$3")));
+        $('#@Html.Raw(nameof(Model.data.user.ngay_cap))').datepicker('setDate', new Date("@Model.data.user.ngay_cap".replace(/(\d{2})\/(\d{2})\/(\d{4})/, "$2/$1/$3")));
+        $('#@Html.Raw(nameof(Model.data.user.co_gia_tri_den))').datepicker('setDate', new Date("@Model.data.user.co_gia_tri_den".replace(/(\d{2})\/(\d{2})\/(\d{4})/, "$2/$1/$3")));
     </script>
     <script>
         const mode = {
@@ -412,18 +426,22 @@
             load(mode.normal);
         });
         $('#btn-save-apply').on('click', () => {
+            data.user.anh_mat_truoc = $('#image_@Html.Raw(nameof(Model.data.user.anh_mat_truoc))')
+                .attr('src');
+            data.user.anh_mat_sau = $('#image_@Html.Raw(nameof(Model.data.user.anh_mat_sau))')
+                        .attr('src');
             if (form.checkValidity()) {
-                apicontext.post(data.user, 'Edit', (response) => {
+                apicontext.post(data.user, 'Add', (response) => {
                     if (response.Data.message.popup) {
                         if (response.Data.message.status === 'success') {
                             notify.success(response.Data.message.text, "Thành công");
+                            window.location.href = "/Home/Index";
                         } else {
                             notify.error(response.Data.message.text, "Thất bại");
                         }
                     }
                     data.user = response.Data.data.user;
                     data.update();
-                    load(mode.normal);
                     form.classList.remove('was-validated');
                 });
             }
@@ -431,8 +449,29 @@
         });
     </script>
     <script>
-        $('input[mode="edit"]').bind("keypress click", (evt) => {
+        $('input[mode="edit"]').bind("keyup keypress click", (evt) => {
             data.user[evt.target.name] = evt.target.value;
+        });
+        $('input[mode="edit"]').bind("keyup", (evt) => {
+            if (evt.target.id === '@Html.Raw(nameof(Model.data.user.thuong_tru_tinh))') {
+                bind1();
+            }
+            if (evt.target.id === '@Html.Raw(nameof(Model.data.user.thuong_tru_huyen))') {
+                bind1();
+            }
+            if (evt.target.id === '@Html.Raw(nameof(Model.data.user.thuong_tru_xa))') {
+                bind1();
+            }
+            if (evt.target.id === '@Html.Raw(nameof(Model.data.user.que_quan_tinh))') {
+                bind2();
+            }
+            if (evt.target.id === '@Html.Raw(nameof(Model.data.user.que_quan_huyen))') {
+                bind2();
+            }
+            if (evt.target.id === '@Html.Raw(nameof(Model.data.user.que_quan_xa))') {
+                bind2();
+            }
+
         });
         $.form = {
             checkValidity: () => {
@@ -444,5 +483,46 @@
             }
         }
         load(mode.edit);
+    </script>
+    <script>
+        bind1 = () => {
+            let a = $('#@Html.Raw(nameof(Model.data.user.thuong_tru_tinh))').val();
+            let b = $('#@Html.Raw(nameof(Model.data.user.thuong_tru_huyen))').val();
+            let c = $('#@Html.Raw(nameof(Model.data.user.thuong_tru_xa))').val();
+            $('#@Html.Raw(nameof(Model.data.user.thuong_tru))').val(`${a}, ${b}, ${c}`);
+        }
+        bind2 = () => {
+            $('#@Html.Raw(nameof(Model.data.user.que_quan))').val(`${$('#@Html.Raw(nameof(Model.data.user.que_quan_tinh))').val()}, ${$('#@Html.Raw(nameof(Model.data.user.que_quan_huyen))').val()}, ${$('#@Html.Raw(nameof(Model.data.user.que_quan_xa))').val()}`);
+        }
+    </script>
+    <script>
+        $('#btn-upload-1').click(() => {
+            $("#@Html.Raw(nameof(Model.data.user.anh_mat_truoc))").click();
+        });
+        $('#btn-upload-2').click(() => {
+            $("#@Html.Raw(nameof(Model.data.user.anh_mat_sau))").click();
+        });
+        $('#@Html.Raw(nameof(Model.data.user.anh_mat_truoc))').change(function () {
+            if ($('#@Html.Raw(nameof(Model.data.user.anh_mat_truoc))')[0].files && $('#@Html.Raw(nameof(Model.data.user.anh_mat_truoc))')[0].files[0]) {
+                var reader = new FileReader();
+                reader.onload = function (e) {
+                    $('#image_@Html.Raw(nameof(Model.data.user.anh_mat_truoc))')
+                        .attr('src', e.target.result);
+                };
+                reader.readAsDataURL($('#@Html.Raw(nameof(Model.data.user.anh_mat_truoc))')[0].files[0]);
+                image_type = 0;
+            }
+        });
+        $('#@Html.Raw(nameof(Model.data.user.anh_mat_sau))').change(function () {
+            if ($('#@Html.Raw(nameof(Model.data.user.anh_mat_sau))')[0].files && $('#@Html.Raw(nameof(Model.data.user.anh_mat_sau))')[0].files[0]) {
+                var reader = new FileReader();
+                reader.onload = function (e) {
+                    $('#image_@Html.Raw(nameof(Model.data.user.anh_mat_sau))')
+                        .attr('src', e.target.result);
+                };
+                reader.readAsDataURL($('#@Html.Raw(nameof(Model.data.user.anh_mat_sau))')[0].files[0]);
+                image_type = 0;
+            }
+        });
     </script>
 }

@@ -431,7 +431,7 @@
         });
     </script>
     <script>
-        $('input[mode="edit"]').bind("keypress click", (evt) => {
+        $('input[mode="edit"]').bind("keyup click", (evt) => {
             data.user[evt.target.name] = evt.target.value;
         });        
         $.form = {

@@ -50,7 +50,8 @@ namespace OCR.Controllers
         [HttpPost]
         public JsonResult Upload(string mode)
         {
-            UserModel result = null;
+            UserModel result = new UserModel();
+            result.message = Message.DefaultMessage;
             var content = new MultipartFormDataContent();
             var fileContent = new StreamContent(Request.Files[0].InputStream);
             content.Add(fileContent, "image", Request.Files[0].FileName);
@@ -65,7 +66,8 @@ namespace OCR.Controllers
         [HttpPost]
         public JsonResult Post(Users data)
         {
-            UserModel result = null;
+            UserModel result = new UserModel();
+            result.message = Message.DefaultMessage;
             StringContent content = new System.Net.Http.StringContent(JsonConvert.SerializeObject(data), Encoding.UTF8, "application/json");
             HttpResponseMessage response = client.PostAsync(UrlContants.PostUser.Format(), content).Result;
             if (response.IsSuccessStatusCode)

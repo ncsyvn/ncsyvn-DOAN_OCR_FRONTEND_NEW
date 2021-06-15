@@ -12,5 +12,12 @@ namespace OCR.Models
         public string status;
         public bool popup;
         public int duration;
-    }
+        public static Message DefaultMessage = new Message
+        {
+            text = "Thất bại",
+            status = "error",
+            popup = true,
+            duration = 5
+        };
+    }    
 }

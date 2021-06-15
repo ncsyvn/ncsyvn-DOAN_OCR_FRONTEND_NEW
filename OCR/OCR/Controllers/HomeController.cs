@@ -21,7 +21,8 @@ namespace OCR.Controllers
         [Role(Roles = new string[] { RoleConst.admin })]
         public ActionResult Index(string currentPage = "1", string size = "10", string searchWith = "")
         {
-            UsersModel data = null;
+            UsersModel data = new UsersModel();
+            data.message = Message.DefaultMessage;
             HttpResponseMessage response = client.GetAsync(UrlContants.Users.Format(new object[] { currentPage, size, searchWith })).Result;
             if (response.IsSuccessStatusCode)
             {
@@ -36,7 +37,8 @@ namespace OCR.Controllers
         [Role(Roles = new string[] { RoleConst.admin, RoleConst.user })]
         public ActionResult Detail(string id)
         {
-            UserModel data = null;
+            UserModel data = new UserModel();
+            data.message = Message.DefaultMessage;
             HttpResponseMessage response = client.GetAsync(UrlContants.User.Format(new object[] { id })).Result;
             if (response.IsSuccessStatusCode)
             {
@@ -50,7 +52,8 @@ namespace OCR.Controllers
         [HttpPost]        
         public JsonResult Edit(Users data)
         {
-            UserModel result = null;
+            UserModel result = new UserModel();
+            result.message = Message.DefaultMessage;
             StringContent content = new System.Net.Http.StringContent(JsonConvert.SerializeObject(data), Encoding.UTF8, "application/json");
             HttpResponseMessage response = client.PutAsync(UrlContants.PutUser.Format(new object[] { data.ma }), content).Result;
             if (response.IsSuccessStatusCode)
@@ -64,7 +67,8 @@ namespace OCR.Controllers
         [HttpPost]
         public JsonResult Delete(string id)
         {
-            UserDeleteModel result = null;
+            UserDeleteModel result = new UserDeleteModel();
+            result.message = Message.DefaultMessage;
             HttpResponseMessage response = client.DeleteAsync(UrlContants.DeleteUser.Format(new object[] { id })).Result;
             if (response.IsSuccessStatusCode)
             {
@@ -75,7 +79,8 @@ namespace OCR.Controllers
         [Session]
         public ActionResult Test()
         {
-            UserModel data = null;
+            UserModel data = new UserModel();
+            data.message = Message.DefaultMessage;
             HttpResponseMessage response = client.GetAsync(UrlContants.User.Format()).Result;
             if (response.IsSuccessStatusCode)
             {
@@ -84,10 +89,12 @@ namespace OCR.Controllers
             ViewBag.Title = "";
             return View(data);
         }
-
+        [Session]
+        [Role(Roles = new string[] { RoleConst.admin })]
         public ActionResult Add()
         {
             UserModel data = new UserModel();
+            data.message = Message.DefaultMessage;
             data.data = new UserDataset();
             data.data.user = new Users();
             data.data.user.anh_mat_sau = "";
@@ -112,6 +119,21 @@ namespace OCR.Controllers
             data.data.user.thuong_tru_xa = "";
             data.data.user.ton_giao = "Không";
             return View(data);
+        }
+        [Session]
+        [Role(Roles = new string[] { RoleConst.admin })]
+        [HttpPost]
+        public JsonResult Add(Users data)
+        {
+            UserModel result = new UserModel();
+            result.message = Message.DefaultMessage;
+            StringContent content = new System.Net.Http.StringContent(JsonConvert.SerializeObject(data), Encoding.UTF8, "application/json");
+            HttpResponseMessage response = client.PostAsync(UrlContants.PostUser.Format(), content).Result;
+            if (response.IsSuccessStatusCode)
+            {
+                result = response.Content.ReadAsAsync<UserModel>().Result;
+            }
+            return Json(Json(result));
         }
     }
 }

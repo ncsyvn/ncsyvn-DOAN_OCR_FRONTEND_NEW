@@ -23,7 +23,8 @@ namespace OCR.Controllers
         [HttpPost]
         public JsonResult SignIn(Account data)
         {
-            AccountModel result = null;
+            AccountModel result = new AccountModel();
+            result.message = Message.DefaultMessage;
             StringContent content = new System.Net.Http.StringContent(JsonConvert.SerializeObject(data), Encoding.UTF8, "application/json");
             HttpResponseMessage response = client.PostAsync(UrlContants.SignIn.Format(), content).Result;
             if (response.IsSuccessStatusCode)
@@ -44,7 +45,8 @@ namespace OCR.Controllers
         [HttpPost]
         public JsonResult SignUp(Account data)
         {
-            AccountModel result = null;
+            AccountModel result = new AccountModel();
+            result.message = Message.DefaultMessage;
             StringContent content = new System.Net.Http.StringContent(JsonConvert.SerializeObject(data), Encoding.UTF8, "application/json");
             HttpResponseMessage response = client.PostAsync(UrlContants.SignUp.Format(), content).Result;
             if (response.IsSuccessStatusCode)
