@@ -30,11 +30,14 @@ namespace OCR.Controllers
             if (response.IsSuccessStatusCode)
             {
                 result = response.Content.ReadAsAsync<AccountModel>().Result;
+                Session["user"] = result;
+                if (result.data != null)
+                {
+                    Session["role"] = result.data.role;
+                    Session["user-id"] = result.data.user_id;
+                    Session["account-id"] = result.data.account_id;
+                }                
             }
-            result.data.role = "admin";
-            Session["user"] = result;
-            Session["role"] = result.data.role;
-            Session["user-id"] = result.data.user_id;
             return Json(Json(result));
         }
         public ActionResult Register()
@@ -52,7 +55,7 @@ namespace OCR.Controllers
             if (response.IsSuccessStatusCode)
             {
                 result = response.Content.ReadAsAsync<AccountModel>().Result;
-            }            
+            }
             return Json(Json(result));
         }
 
@@ -61,6 +64,7 @@ namespace OCR.Controllers
             Session["user"] = null;
             Session["role"] = null;
             Session["user-id"] = null;
+            Session["account-id"] = null;
             return View("Login");
         }
     }

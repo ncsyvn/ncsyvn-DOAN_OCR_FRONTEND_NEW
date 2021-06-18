@@ -40,7 +40,7 @@ namespace OCR.Controllers
             UserModel data = new UserModel();
             data.message = Message.DefaultMessage;
             HttpResponseMessage response = client.GetAsync(UrlContants.User.Format(new object[] { id })).Result;
-            if (response.IsSuccessStatusCode)
+        if (response.IsSuccessStatusCode)
             {
                 data = response.Content.ReadAsAsync<UserModel>().Result;
             }
@@ -125,6 +125,7 @@ namespace OCR.Controllers
         [HttpPost]
         public JsonResult Add(Users data)
         {
+            data.account_id = (string)Session["account-id"];
             UserModel result = new UserModel();
             result.message = Message.DefaultMessage;
             StringContent content = new System.Net.Http.StringContent(JsonConvert.SerializeObject(data), Encoding.UTF8, "application/json");

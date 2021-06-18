@@ -11,6 +11,11 @@
     </ul>
 </div>
 <div class="separator-breadcrumb border-top"></div>
+@{ if (Model.data.user.so_the == "") { 
+    <p> Bạn chưa thực hiện quy trình eKYC </p>
+    }
+    else
+    {
 <div class="row">
     <div class="col-md-12">
         <div class="card mb-4">
@@ -82,7 +87,7 @@
                                                    type="radio"
                                                    name="@Html.Raw(nameof(Model.data.user.gioi_tinh))"
                                                    value="Nam"
-                                                   checked="@(Model.data.user.gioi_tinh.ToLower().Equals("nam")?true:false)" /><span class="ul-form__radio-font">Nam</span><span class="checkmark"></span>
+                                                   checked="@(Model.data.user.gioi_tinh.ToLower().Equals("nam") ? true : false)" /><span class="ul-form__radio-font">Nam</span><span class="checkmark"></span>
                                         </label>
                                         <label mode="edit" style="display:none;" class="ul-radio__position radio radio-primary">
                                             <input kind="radio" mode="edit"
@@ -90,7 +95,7 @@
                                                    type="radio"
                                                    name="@Html.Raw(nameof(Model.data.user.gioi_tinh))"
                                                    value="Nữ"
-                                                   checked="@(Model.data.user.gioi_tinh.ToLower().Equals("nam")?false:true)" /><span class="ul-form__radio-font">Nữ</span><span class="checkmark"></span>
+                                                   checked="@(Model.data.user.gioi_tinh.ToLower().Equals("nam") ? false : true)" /><span class="ul-form__radio-font">Nữ</span><span class="checkmark"></span>
                                         </label>
                                     </div>
                                 </div>
@@ -122,7 +127,7 @@
                                                    type="radio"
                                                    name="@Html.Raw(nameof(Model.data.user.ton_giao))"
                                                    value="Có"
-                                                   checked="@(Model.data.user.ton_giao.ToLower().Equals("có")?true:false)" /><span class="ul-form__radio-font">Có</span><span class="checkmark"></span>
+                                                   checked="@(Model.data.user.ton_giao.ToLower().Equals("có") ? true : false)" /><span class="ul-form__radio-font">Có</span><span class="checkmark"></span>
                                         </label>
                                         <label mode="edit" style="display:none;" class="ul-radio__position radio radio-primary">
                                             <input kind="radio" mode="edit"
@@ -130,7 +135,7 @@
                                                    type="radio"
                                                    name="@Html.Raw(nameof(Model.data.user.ton_giao))"
                                                    value="Không"
-                                                   checked="@(Model.data.user.ton_giao.ToLower().Equals("có")?false:true)" /><span class="ul-form__radio-font">Không</span><span class="checkmark"></span>
+                                                   checked="@(Model.data.user.ton_giao.ToLower().Equals("có") ? false : true)" /><span class="ul-form__radio-font">Không</span><span class="checkmark"></span>
                                         </label>
                                     </div>
                                 </div>
@@ -321,6 +326,7 @@
         </div>
     </div>
 </div>
+        } }
 <div class="modal fade bd-example-modal-sm" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle-1" aria-hidden="true">
     <div class="modal-dialog modal-sm">
         <div class="modal-content">

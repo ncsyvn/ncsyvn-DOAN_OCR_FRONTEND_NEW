@@ -25,14 +25,14 @@ namespace OCR.Controllers
             data.data.user = new Users();
             data.data.user.anh_mat_sau = "";
             data.data.user.anh_mat_truoc = "";
-            data.data.user.co_gia_tri_den = DateTime.Now.ToString("dd/MM/yyyy");
+            data.data.user.co_gia_tri_den = "";
             data.data.user.dan_toc = "";
             data.data.user.gioi_tinh = "Nam";
             data.data.user.ho_va_ten = "";
             data.data.user.link_anh = "";
             data.data.user.ma = "";
-            data.data.user.ngay_cap = DateTime.Now.ToString("dd/MM/yyyy");
-            data.data.user.ngay_sinh = DateTime.Now.ToString("dd/MM/yyyy");
+            data.data.user.ngay_cap = "";
+            data.data.user.ngay_sinh = "";
             data.data.user.noi_cap = "";
             data.data.user.que_quan = "";
             data.data.user.que_quan_huyen = "";
@@ -66,6 +66,7 @@ namespace OCR.Controllers
         [HttpPost]
         public JsonResult Post(Users data)
         {
+            data.account_id = (string)Session["account-id"];
             UserModel result = new UserModel();
             result.message = Message.DefaultMessage;
             StringContent content = new System.Net.Http.StringContent(JsonConvert.SerializeObject(data), Encoding.UTF8, "application/json");

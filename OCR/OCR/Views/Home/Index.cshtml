@@ -53,15 +53,16 @@
                         </thead>
                         <tbody>
                             @{
-                                    int index = 1;
-                                    foreach (var item in Model.data.users)
-                                    {
+                                int index = 1;
+                                if (Model.data.users.Count > 0) { 
+                                foreach (var item in Model.data.users)
+                                {
                                     <tr>
                                         <th scope="row">@index</th>
                                         <td>@item.so_the</td>
                                         <td>@item.ho_va_ten</td>
                                         <td>@item.ngay_sinh</td>
-                                        <td><span class="badge @(item.gioi_tinh.ToLower().Equals("nam")?"badge-success":"badge-info")">@item.gioi_tinh</span></td>
+                                        <td><span class="badge @(item.gioi_tinh.ToLower().Equals("nam") ? "badge-success" : "badge-info")">@item.gioi_tinh</span></td>
                                         <td>@item.dan_toc</td>
                                         <td>@item.ton_giao</td>
                                         <td>@item.que_quan</td>
@@ -71,8 +72,8 @@
                                         <td>@item.noi_cap</td>
                                         <td><a class="text-success mr-2" href="/Home/Detail?id=@item.ma"><i class="nav-icon i-Pen-2 font-weight-bold"></i></a><a class="text-danger mr-2" href="#" onclick="remove('@item.ma')" data-toggle="modal" data-target=".bd-example-modal-sm"><i class="nav-icon i-Close-Window font-weight-bold"></i></a></td>
                                     </tr>
-                                    index++;
-                                }
+                                        index++;
+                                    } }
                             }
                         </tbody>
                     </table>

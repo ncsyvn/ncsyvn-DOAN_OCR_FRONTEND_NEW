@@ -799,7 +799,7 @@
               d="M50 10
            a 40 40 0 0 1 0 80
            a 40 40 0 0 1 0 -80">
-            <animate attributeName="stroke-dasharray" from="0,251.2" to="251.2,0" dur="30s" begin="btn-recognize.click"/>
+            <animate attributeName="stroke-dasharray" from="0,251.2" to="251.2,0" dur="30s" begin="btn-recognize.click" />
         </path>
         <text id="count" x="50" y="50" text-anchor="middle" dy="7" font-size="20">100%</text>
     </svg>
@@ -923,6 +923,10 @@
         var default_image = '/Content/dist-assets/images/Blank.jpg';
         var image_type = 0;
         var count = $(('#count'));
+        var old_image_0_1 = default_image;
+        var old_image_0_2 = default_image;
+        var old_image_1_1 = default_image;
+        var old_image_1_2 = default_image;
     </script>
     <script>
         $('#btn-upload').click(() => {

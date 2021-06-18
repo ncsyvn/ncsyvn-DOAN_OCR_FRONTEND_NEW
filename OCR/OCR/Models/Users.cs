@@ -28,6 +28,7 @@ namespace OCR.Models
         public string anh_mat_truoc { get; set; }
         public string anh_mat_sau { get; set; }
         public string link_anh { get; set; }
+        public string account_id { get; set; }
     }
 
 }

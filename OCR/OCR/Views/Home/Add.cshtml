@@ -429,7 +429,9 @@
             data.user.anh_mat_truoc = $('#image_@Html.Raw(nameof(Model.data.user.anh_mat_truoc))')
                 .attr('src');
             data.user.anh_mat_sau = $('#image_@Html.Raw(nameof(Model.data.user.anh_mat_sau))')
-                        .attr('src');
+                .attr('src');
+            data.user.que_quan = $('#@Html.Raw(nameof(Model.data.user.que_quan))').val();
+            data.user.thuong_tru = $('#@Html.Raw(nameof(Model.data.user.thuong_tru))').val();
             if (form.checkValidity()) {
                 apicontext.post(data.user, 'Add', (response) => {
                     if (response.Data.message.popup) {

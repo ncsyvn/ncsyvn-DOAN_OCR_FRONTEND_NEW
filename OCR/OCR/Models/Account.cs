@@ -7,11 +7,12 @@ namespace OCR.Models
 {
     public class Account
     {
-        public string username;
-        public string password;
-        public string confirm_password;
-        public string token;
-        public string user_id;
-        public string role;
+        public string username { get; set; }
+        public string password { get; set; }
+        public string confirm_password { get; set; }
+        public string token { get; set; }
+        public string user_id { get; set; }
+        public string role { get; set; }
+        public string account_id { get; set; }
     }
 }
