@@ -11,7 +11,7 @@
     </ul>
 </div>
 <div class="separator-breadcrumb border-top"></div>
-@{ if (Model.data.user.so_the == "") { 
+@{ if (string.IsNullOrEmpty(Model.data?.user?.so_the??null)) { 
     <p> Bạn chưa thực hiện quy trình eKYC </p>
     }
     else

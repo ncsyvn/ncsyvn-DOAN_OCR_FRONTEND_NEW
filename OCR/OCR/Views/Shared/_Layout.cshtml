@@ -50,7 +50,7 @@
                                 if (Session["role"].Equals("user"))
                                 {
 
-                                    <li class="Ul_li--hover"><a href="/Home/Detail?id=@Session["user-id"]"><i class="i-Business-Mens text-20 mr-2 text-muted"></i><span class="item-name text-15 text-muted">Tài khoản</span></a></li>
+                                    <li class="Ul_li--hover"><a href="/Home/Detail?id=@(string.IsNullOrEmpty((string)Session["user-id"])?Session["account-id"]:Session["user-id"])"><i class="i-Business-Mens text-20 mr-2 text-muted"></i><span class="item-name text-15 text-muted">Tài khoản</span></a></li>
                                     <li class="Ul_li--hover"><a href="/Recogniztion/Index"><i class="i-Data-Upload text-20 mr-2 text-muted"></i><span class="item-name text-15 text-muted">eKYC</span></a></li>
                                 }
                                 else

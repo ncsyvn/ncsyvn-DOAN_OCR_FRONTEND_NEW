@@ -66,7 +66,7 @@ namespace OCR.Controllers
         [HttpPost]
         public JsonResult Post(Users data)
         {
-            data.account_id = (string)Session["account-id"];
+            data.ma = (string)Session["user-id"];
             UserModel result = new UserModel();
             result.message = Message.DefaultMessage;
             StringContent content = new System.Net.Http.StringContent(JsonConvert.SerializeObject(data), Encoding.UTF8, "application/json");
