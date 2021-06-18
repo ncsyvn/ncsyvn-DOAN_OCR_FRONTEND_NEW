@@ -948,6 +948,13 @@
             }
         });
         $('#btn-refresh').click(() => {
+            if (step === 1) {
+                old_image_0_1 = default_image;
+                old_image_1_1 = default_image;
+            } else {
+                old_image_0_2 = default_image;
+                old_image_1_2 = default_image;
+            }
             $('#image').attr('src', default_image);
             $('#upload').val("");
         });
@@ -997,7 +1004,8 @@
             step = 2;
             mode.value = mode.behind;
             fillDataOnly(user, type);
-            $('#image').attr('src', default_image);
+            old_image_0_1 = JSON.parse(JSON.stringify($('#image').attr('src')));
+            $('#image').attr('src', old_image_0_2);
             $('#upload').val("");
         });
         $('#id0-2 .btn-previous').click(() => {
@@ -1007,7 +1015,8 @@
             step = 1;
             mode.value = mode.front;
             fillDataOnly(user, type);
-            $('#image').attr('src', default_image);
+            old_image_0_2 = JSON.parse(JSON.stringify($('#image').attr('src')));
+            $('#image').attr('src', old_image_0_1);
             $('#upload').val("");
         });
         $('#id1-1 .btn-next').click(() => {
@@ -1017,7 +1026,8 @@
             step = 2;
             mode.value = mode.behind;
             fillDataOnly(user, type);
-            $('#image').attr('src', default_image);
+            old_image_1_1 = JSON.parse(JSON.stringify($('#image').attr('src')));
+            $('#image').attr('src', old_image_1_2);
             $('#upload').val("");
         });
         $('#id1-2 .btn-previous').click(() => {
@@ -1027,7 +1037,8 @@
             step = 1;
             mode.value = mode.front;
             fillDataOnly(user, type);
-            $('#image').attr('src', default_image);
+            old_image_1_2 = JSON.parse(JSON.stringify($('#image').attr('src')));
+            $('#image').attr('src', old_image_1_1);
             $('#upload').val("");
         });
         fillData = (data, _type) => {
